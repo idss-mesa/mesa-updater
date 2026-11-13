@@ -23,7 +23,7 @@ set -euo pipefail
 
 die() { echo "mesa-ci: $*" >&2; exit 1; }
 
-[ -f mesa.env ] && [ -f VERSION ] || die "run from the image repo root (mesa.env and VERSION not found)"
+if [ ! -f mesa.env ] || [ ! -f VERSION ]; then die "run from the image repo root (mesa.env and VERSION not found)"; fi
 ci=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PATH="$PWD/.tools/bin:$PATH"
 
@@ -35,7 +35,7 @@ conf() {
   printf '%s' "$value"
 }
 image=$(conf MESA_IMAGE); context=$(conf MESA_CONTEXT); arches=$(conf MESA_ARCHES)
-[ -n "$image" ] && [ -n "$context" ] && [ -n "$arches" ] || die "mesa.env must set MESA_IMAGE, MESA_CONTEXT and MESA_ARCHES"
+if [ -z "$image" ] || [ -z "$context" ] || [ -z "$arches" ]; then die "mesa.env must set MESA_IMAGE, MESA_CONTEXT and MESA_ARCHES"; fi
 name=${image##*/}
 
 version=$(cat VERSION)
