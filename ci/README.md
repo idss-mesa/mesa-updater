@@ -19,6 +19,7 @@ Run from an image repo's root:
 ci/mesa-ci.sh check                  # shared files unchanged, VERSION is X.Y.Z, every lock and pin parses
 VARIANT=cpu ci/mesa-ci.sh build      # local image mesa-local/<name>:<variant>-<arch>
 VARIANT=cpu ci/mesa-ci.sh test       # ci/test-cpu.sh, gpu/test-gpu.sh or sandbox/test-sandbox.sh
+VARIANT=cpu ci/mesa-ci.sh push       # push it as <image>:stage-<STAGE_ID>-<variant>-<arch>; digest in out/<variant>-<arch>/digest
 VARIANT=cpu ci/mesa-ci.sh sbom       # syft scan, lock SBOM, probe, cross-check, merged SBOM in out/<variant>-<arch>/
 ```
 
@@ -28,6 +29,19 @@ another. `ARCH` defaults to the machine's. `sbom` exits non-zero when the
 cross-check fails and still writes the merged SBOM; `STRICT_REVERSE=1` also
 fails on unexplained scanner components. `sbom` needs `syft` and `crane`
 (`ci/install-tools.sh syft crane`).
+
+`push` needs a registry login and `crane`. It writes a **staging tag**, which
+nobody pulls: the tags users see are written by `release.py publish` once
+every variant has passed. It refuses to record an image index (the build
+pushes one image manifest, without a provenance attestation). `sbom` records
+the pushed digest when `push` ran before it, else the local image ID. `build`
+with a `BASE_REF` of the form `<image>@sha256:...` records that digest in
+`out/<variant>-<arch>/base`; a release checks it.
+
+With `CHECK_RELEASED=1`, `check` also asks `origin` whether `VERSION` already
+has a git tag `vX.Y.Z`. If it has, the files under the CPU context, `gpu/`
+and `sandbox/` (other than `*.md`) must be those of that tag: a change to an
+image needs a new version. An unreachable `origin` is an error.
 
 Each image repo keeps, next to its copy of `ci/`:
 
@@ -41,6 +55,169 @@ Each image repo keeps, next to its copy of `ci/`:
 The reusable workflow `.github/workflows/mesa-pr.yml` in this repo runs
 `check`, then `build`, `test` and `sbom` for the CPU image on each
 architecture and for the sandbox image on amd64, with no secrets.
+
+## Release
+
+A release is the set of images of one `VERSION`, each with an attested SBOM:
+
+| Variant, arch | Tag |
+|---|---|
+| cpu, amd64 | `vX.Y.Z` |
+| sandbox, amd64 | `vX.Y.Z-sandbox` |
+| gpu, amd64 | `vX.Y.Z-gpu` |
+| gpu-sandbox, amd64 | `vX.Y.Z-gpu-sandbox` |
+| cpu, arm64 (repos whose `MESA_ARCHES` has it) | `vX.Y.Z-arm64` |
+
+Merging a change to `VERSION` on `main` starts it
+(`.github/workflows/mesa-release.yml`, called from each image repo's
+`release.yml`). The order is fixed:
+
+1. **guard** (`release.py guard`): the version is not released yet.
+2. **build**, per architecture on a hosted runner: `build`, `test`, `push`,
+   `sbom` for the CPU image, then for the sandbox image built on the pushed
+   CPU digest. Each SBOM is attested to its digest right away
+   (`attach_sbom.sh`, keyless).
+3. **gpu** (`gpu_request.sh`): the GPU and GPU-sandbox images are built on
+   gpu06, on the pushed CPU digest, by the private repo
+   `idss-mesa/mesa-gpu-builder`. The job only asks for that build and waits.
+4. **publish** (`release.py publish`), only when everything above passed:
+   attest the GPU SBOMs, verify every attestation, write the tags, create the
+   GitHub release with the SBOMs, `release-manifest.json` (tag to digest) and
+   `SHA256SUMS`.
+
+Until step 4 only staging tags and attestations of staged digests exist.
+
+**If a run dies inside step 4**, use "Re-run failed jobs" on that run: it
+finishes the same build, and every part of `publish` first looks at what is
+already there. Do not use "Re-run all jobs", and do not start a new run: both
+would build other digests, so `guard` refuses a version that is partly
+published. Cancelling a run stops the release if `publish` has not started.
+
+**Who may release.** Three things tie a release to what was merged:
+
+- The attestations are signed with a certificate GitHub issues to the
+  running workflow. It names the shared workflow file, the image repo, the
+  branch and the commit; `publish`, the GPU builder and the command in the
+  release notes all check all four. A run from another branch cannot produce
+  an attestation that passes for `main`.
+- The GPU builder only builds a commit on `main`, on a CPU image carrying
+  such an attestation from a run on `main` at that commit.
+- The key that lets a workflow ask the builder for a build is a secret of the
+  image repo's environment `gpu-dispatch`, which only runs on `main` can use.
+
+These rest on `main` itself being protected (pull requests only) in the image
+repos and in this repo, and on the registry refusing to move `v*` tags.
+
+A **test run** passes a tag prefix `ci-test-<word>-`. It writes
+`ci-test-<word>-vX.Y.Z*` tags and a draft GitHub release and creates no git
+tag. From a branch other than `main` it must leave the GPU variants out.
+
+GPU builds of all image repos share one runner that takes one job at a time.
+The gpu job waits up to 200 minutes, queueing included; when that runs out,
+"Re-run failed jobs" asks again.
+
+### `release.py`
+
+```
+release.py plan    [--tag-prefix P] [--skip-gpu]
+release.py guard   [--tag-prefix P] [--skip-gpu] --ref REF --github-repo OWNER/NAME [--github-output FILE]
+release.py publish [--tag-prefix P] [--skip-gpu] --out DIR --revision SHA
+                   --ref REF --github-repo OWNER/NAME --identity-regexp RE | --cosign-key cosign.pub
+                   [--no-github-release]
+```
+
+Run from the image repo's root (or `--repo-root`); reads `mesa.env` and
+`VERSION`. Uses `crane`, `cosign`, `gh` and `attach_sbom.sh`
+(`--crane`, `--cosign`, `--gh`, `--attach` name other binaries). Exit 2 on bad
+arguments or repo files, 1 when the release cannot go on.
+
+`plan` prints the release as JSON: `image`, `name`, `version`, `release`
+(the tag of the GitHub release), `test`, `arches` and `images`
+(`variant`, `arch`, `tag`).
+
+Both `guard` and `publish` refuse a real release unless `--ref` is
+`refs/heads/main` and the GPU variants are included, and refuse a test run
+with GPU variants from any other ref.
+
+`guard` prints the state and, with `--github-output`, appends `state`,
+`release`, `image`, `test` and `arches` (a JSON list) to that file:
+
+| Found | Result |
+|---|---|
+| no tag of the release in the registry, no published GitHub release, no git tag | `state=new` |
+| every tag, a published GitHub release, and its `release-manifest.json` lists exactly the digests the tags point at | `state=released`: the workflow ends without doing anything |
+| every tag and a published release whose manifest differs or cannot be read | fails |
+| anything in between | fails: partly published |
+| test run: any of its tags exists | fails: delete them or use another prefix |
+
+A registry or GitHub error is never read as "not there": only the registry's
+`NOT_FOUND` / `MANIFEST_UNKNOWN` and GitHub's 404 count as absent.
+
+`publish` reads `DIR/<variant>-<arch>/{digest,image.cdx.json,report.json}`
+(and `base` for every variant but `cpu`) for each image of the plan and stops
+before writing anything unless:
+
+- each SBOM names this image, its own digest, this version, variant, arch and
+  `--revision`, and its cross-check report has no `missing`,
+  `version-mismatch` or `hash-mismatch` entry;
+- each variant's `base` is the staged digest of the variant it builds on
+  (sandbox and gpu on cpu, gpu-sandbox on gpu), and its layers start with
+  that image's layers and add at least one;
+- each digest is in the registry and is a `linux/<arch>` image;
+- each release tag is absent or already points at that digest.
+
+Then, in this order:
+
+1. **Attestations.** For each image, `cosign verify-attestation` with the
+   issuer GitHub Actions, the identity `--identity-regexp`, and the
+   repository `--github-repo`, ref `--ref` and commit `--revision` of the
+   signing run. An attestation counts when it verifies, is a CycloneDX
+   attestation of this digest and carries exactly this SBOM.
+   - One counts: nothing to do.
+   - Some verify but none carries this SBOM: `attach_sbom.sh` signs this one.
+   - Nothing verifies: `attach_sbom.sh --index-only` first (an earlier
+     attempt may have attested and died before writing the tag cosign finds
+     it by). If referrers exist and still nothing verifies, `publish` stops
+     rather than sign again. If nothing is attached, `attach_sbom.sh` signs.
+   After signing, the image is verified again; failing that stops everything.
+2. **Tags**, only when every image verified: each tag is read again and
+   written with `crane tag` if absent; a tag that meanwhile points elsewhere
+   stops the run. (The registry's immutability rule for `v*` is what makes a
+   written tag final; this check only makes a collision visible.)
+3. **Release files** in `DIR/release/`: `<name>-<tag>.cdx.json` per image,
+   `release-manifest.json`, `SHA256SUMS`, `notes.md`. An existing directory
+   there is replaced only if it is an earlier release directory.
+4. **GitHub release**: `gh release create` at `--revision` (a draft for a
+   test run). If the release exists its files are uploaded again, and a
+   draft of a real release (left by an attempt that died, or written by
+   hand) is then published. A real release ends with a check that the
+   release is published and its git tag is on `--revision`.
+
+`--cosign-key` verifies with a public key and no transparency log, for tests
+outside GitHub Actions (`COSIGN_KEY` and `COSIGN_SIGNING_CONFIG` make
+`attach_sbom.sh` sign the same way). `--no-github-release` stops after the
+release files. A real release refuses both.
+
+### `gpu_request.sh`
+
+```
+gpu_request.sh start CPU_DIGEST          # dispatch; prints the builder's run id
+gpu_request.sh wait RUN_ID MINUTES DIR   # wait; when finished, download the result into DIR
+gpu_request.sh cancel RUN_ID
+```
+
+`GH_TOKEN` must be a token of the GitHub App that may start workflow runs in
+`idss-mesa/mesa-gpu-builder` and nothing else (Actions: write on that one
+repo). `start` sends the repo name, `GITHUB_SHA`, the CPU digest, `STAGE_ID`
+and `<run id>-<attempt>`, and takes the run id from the answer to the
+dispatch (falling back to the run named `<repo> <run id>-<attempt>` if the
+answer has none). The builder refuses any commit that is not on `main` of one
+of the five image repos and any CPU image not attested by a run on `main` at
+that commit. `wait` exits 1 when the build failed or its result cannot be
+downloaded; otherwise it exits 0 and writes `done=true` or `done=false` to
+`GITHUB_OUTPUT`, so a workflow can wait in several steps with a fresh token
+each (an App token lasts an hour). The result is the builder's
+`out/<variant>-amd64/` directories for `gpu` and `gpu-sandbox`.
 
 ## Terms
 
@@ -290,17 +467,22 @@ Refuses a manifest whose `subject.digest` is not the subject.
 
 ```
 attach_sbom.sh <repo>@<digest> <image.cdx.json>
+attach_sbom.sh --index-only <repo>@<digest>
 ```
 
 Runs `cosign attest --type cyclonedx` (keyless in CI; `COSIGN_KEY` and
 `COSIGN_SIGNING_CONFIG` for offline tests), then lists the subject's referrers
 from the registry, fetches each manifest with `crane`, builds the index with
 `referrers_index.py` and pushes it to the fallback tag with
-`oras manifest push`. Safe to re-run: the referrers already there are fetched
-and checked before anything is signed, and every referrer manifest is listed
-once in the index. A second run does add a second attestation of the same
-predicate (cosign signs again); the release workflow only attaches when the
-release tag does not exist yet.
+`oras manifest push`. The referrers already there are fetched and checked
+before anything is signed, and every referrer manifest is listed once in the
+index. Every run signs: a second run adds a second attestation of the same
+predicate. `release.py publish` therefore verifies first and only calls this
+when no attestation of the SBOM can be found.
+
+`--index-only` signs nothing: it rewrites the fallback tag from the referrers
+the registry lists, and exits 3 when there are none. It repairs a run that
+died between `cosign attest` and the tag.
 
 ### `install-tools.sh` and `tools.lock`
 

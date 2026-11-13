@@ -1,0 +1,384 @@
+name: mesa-release
+
+# Reusable release of a MESA image repo. Called as
+#
+#   jobs:
+#     release:
+#       permissions:
+#         contents: write      # the GitHub release and its git tag
+#         id-token: write      # keyless signing of the SBOM attestations
+#       uses: idss-mesa/mesa-updater/.github/workflows/mesa-release.yml@<commit sha>
+#       with:
+#         tag_prefix: ${{ inputs.tag_prefix || '' }}
+#       secrets:
+#         HARBOR_USERNAME: ${{ secrets.HARBOR_USERNAME }}
+#         HARBOR_PASSWORD: ${{ secrets.HARBOR_PASSWORD }}
+#         MESA_GPU_DISPATCH_PRIVATE_KEY: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+#
+# What it does, in this order (ci/README.md, "Release"):
+#
+#   guard    the version in VERSION is not released yet (already released: the
+#            run ends green without doing anything)
+#   build    per architecture on a hosted runner: CPU image, then (amd64) the
+#            sandbox image on it; each is tested, pushed under a staging tag,
+#            scanned, cross-checked against the lock files, and its SBOM is
+#            attested to its digest
+#   gpu      asks the builder repo (the only one the gpu06 runner serves) for
+#            the GPU and GPU-sandbox images on the staged CPU image. Only from
+#            main: the key that may ask lives in the `gpu-dispatch` environment
+#   publish  only when all of that passed: attests the GPU SBOMs, verifies
+#            every attestation, writes the vX.Y.Z* tags, creates the GitHub
+#            release
+#
+# Nothing a user pulls changes before `publish`. The steps live in the calling
+# repo's own ci/ scripts, so each of them also runs by hand.
+#
+# Each image repo needs an environment `gpu-dispatch`, limited to the branch
+# main, holding the secret MESA_GPU_DISPATCH_PRIVATE_KEY. That key must exist
+# nowhere else (not as a repository or organisation secret): any branch could
+# read it there.
+on:
+  workflow_call:
+    inputs:
+      tag_prefix:
+        description: >-
+          Empty for a real release (from main only). ci-test-<word>- makes a
+          test run: tags ci-test-<word>-vX.Y.Z*, a draft GitHub release, no git tag.
+        type: string
+        default: ''
+      gpu:
+        description: Build the GPU variants. Only a test run may turn this off.
+        type: boolean
+        default: true
+    secrets:
+      HARBOR_USERNAME:
+        required: true
+      HARBOR_PASSWORD:
+        required: true
+      # Declared so the gpu job can read it; the value comes from the calling
+      # repo's `gpu-dispatch` environment, not from what the caller passes.
+      MESA_GPU_DISPATCH_PRIVATE_KEY:
+        description: Key of the GitHub App that may start runs in the builder repo (needed unless gpu is false)
+        required: false
+
+permissions: {}
+
+env:
+  TAG_PREFIX: ${{ inputs.tag_prefix }}
+  SKIP_GPU: ${{ !inputs.gpu && '1' || '' }}
+  # One staging namespace per run: a re-run of failed jobs keeps using it.
+  STAGE_ID: ${{ github.run_id }}
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      state: ${{ steps.guard.outputs.state }}
+      release: ${{ steps.guard.outputs.release }}
+      image: ${{ steps.guard.outputs.image }}
+      arches: ${{ steps.guard.outputs.arches }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install pinned tools
+        run: |
+          ci/install-tools.sh crane
+          echo "$PWD/.tools/bin" >> "$GITHUB_PATH"
+
+      - name: Static checks
+        run: ci/mesa-ci.sh check
+
+      - name: Is this version free to release?
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 ci/release.py guard --tag-prefix "$TAG_PREFIX" ${SKIP_GPU:+--skip-gpu} \
+            --ref "$GITHUB_REF" --github-repo "$GITHUB_REPOSITORY" --github-output "$GITHUB_OUTPUT"
+
+  build:
+    needs: guard
+    if: needs.guard.outputs.state == 'new'
+    runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      id-token: write      # keyless signing of the SBOM attestations
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ${{ fromJSON(needs.guard.outputs.arches) }}
+    env:
+      ARCH: ${{ matrix.arch }}
+      IMAGE: ${{ needs.guard.outputs.image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The image, its sandbox variant and the scanner's working copy need
+      # about 25 GB; the preinstalled SDKs are not used here.
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+
+      - name: Install pinned tools
+        run: |
+          ci/install-tools.sh syft crane cosign oras
+          echo "$PWD/.tools/bin" >> "$GITHUB_PATH"
+
+      - name: Build the CPU image
+        run: VARIANT=cpu ci/mesa-ci.sh build
+
+      - name: Test the CPU image
+        run: VARIANT=cpu ci/mesa-ci.sh test
+
+      # The password reaches docker on stdin; it is never part of a command line.
+      - name: Log in to the registry
+        env:
+          HARBOR_USERNAME: ${{ secrets.HARBOR_USERNAME }}
+          HARBOR_PASSWORD: ${{ secrets.HARBOR_PASSWORD }}
+        run: printf '%s' "$HARBOR_PASSWORD" | docker login --username "$HARBOR_USERNAME" --password-stdin "${IMAGE%%/*}"
+
+      - name: Push the CPU image under its staging tag
+        run: VARIANT=cpu ci/mesa-ci.sh push
+
+      - name: SBOM and cross-check (CPU)
+        run: VARIANT=cpu ci/mesa-ci.sh sbom
+
+      # Signed as this workflow, for this repo, branch and commit. The GPU
+      # builder builds on a CPU image only if it carries this attestation
+      # from a run on main.
+      - name: Attest the CPU SBOM to the pushed digest
+        run: ci/attach_sbom.sh "$IMAGE@$(cat "out/cpu-$ARCH/digest")" "out/cpu-$ARCH/image.cdx.json"
+
+      - name: Build the sandbox image on the pushed CPU image
+        if: matrix.arch == 'amd64'
+        run: BASE_REF="$IMAGE@$(cat out/cpu-amd64/digest)" VARIANT=sandbox ci/mesa-ci.sh build
+
+      - name: Test the sandbox image
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh test
+
+      - name: Push the sandbox image under its staging tag
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh push
+
+      - name: SBOM and cross-check (sandbox)
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh sbom
+
+      - name: Attest the sandbox SBOM to the pushed digest
+        if: matrix.arch == 'amd64'
+        run: ci/attach_sbom.sh "$IMAGE@$(cat out/sandbox-amd64/digest)" out/sandbox-amd64/image.cdx.json
+
+      - name: Log out of the registry
+        if: always()
+        run: docker logout "${IMAGE%%/*}"
+
+      # The whole directory, so the artifact keeps the <variant>-<arch>/ level.
+      - name: Upload digests, SBOMs and reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: staged-${{ matrix.arch }}
+          path: out/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  # The gpu06 runner serves one private repo and no public one. This job runs
+  # on a hosted runner and only asks that repo for a build, then waits. A
+  # GitHub App token lasts an hour, so the wait is cut into steps with a fresh
+  # token each. The wait covers the time the build spends queued behind
+  # another repo's build: when it runs out, re-run the failed jobs.
+  gpu:
+    needs: [guard, build]
+    if: inputs.gpu && needs.guard.outputs.state == 'new'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    # Only runs on main can read the key (the environment's branch rule).
+    environment: gpu-dispatch
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Fetch the staged CPU digest
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: staged-amd64
+          path: staged
+
+      - name: Builder token
+        id: token1
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.MESA_GPU_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+          owner: idss-mesa
+          repositories: mesa-gpu-builder
+          permission-actions: write
+
+      - name: Ask the builder for the GPU images
+        id: ask
+        env:
+          GH_TOKEN: ${{ steps.token1.outputs.token }}
+        run: |
+          digest=$(cat staged/cpu-amd64/digest)
+          run=$(ci/gpu_request.sh start "$digest")
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for the builder (1)
+        id: wait1
+        env:
+          GH_TOKEN: ${{ steps.token1.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: ci/gpu_request.sh wait "$RUN" 50 out
+
+      - name: Builder token (2)
+        id: token2
+        if: steps.wait1.outputs.done != 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.MESA_GPU_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+          owner: idss-mesa
+          repositories: mesa-gpu-builder
+          permission-actions: write
+
+      - name: Wait for the builder (2)
+        id: wait2
+        if: steps.wait1.outputs.done != 'true'
+        env:
+          GH_TOKEN: ${{ steps.token2.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: ci/gpu_request.sh wait "$RUN" 50 out
+
+      - name: Builder token (3)
+        id: token3
+        if: steps.wait1.outputs.done != 'true' && steps.wait2.outputs.done != 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.MESA_GPU_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+          owner: idss-mesa
+          repositories: mesa-gpu-builder
+          permission-actions: write
+
+      - name: Wait for the builder (3)
+        id: wait3
+        if: steps.wait1.outputs.done != 'true' && steps.wait2.outputs.done != 'true'
+        env:
+          GH_TOKEN: ${{ steps.token3.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: ci/gpu_request.sh wait "$RUN" 50 out
+
+      - name: Builder token (4)
+        id: token4
+        if: steps.wait1.outputs.done != 'true' && steps.wait2.outputs.done != 'true' && steps.wait3.outputs.done != 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.MESA_GPU_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+          owner: idss-mesa
+          repositories: mesa-gpu-builder
+          permission-actions: write
+
+      - name: Wait for the builder (4)
+        id: wait4
+        if: steps.wait1.outputs.done != 'true' && steps.wait2.outputs.done != 'true' && steps.wait3.outputs.done != 'true'
+        env:
+          GH_TOKEN: ${{ steps.token4.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: ci/gpu_request.sh wait "$RUN" 50 out
+
+      - name: Give up on the builder
+        if: steps.wait1.outputs.done != 'true' && steps.wait2.outputs.done != 'true' && steps.wait3.outputs.done != 'true' && steps.wait4.outputs.done != 'true'
+        env:
+          GH_TOKEN: ${{ steps.token4.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: |
+          ci/gpu_request.sh cancel "$RUN" || true
+          echo "the GPU build did not finish within 200 minutes" >&2
+          exit 1
+
+      - name: Upload digests, SBOMs and reports
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: staged-gpu
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: [guard, build, gpu]
+    # Runs when every build it needs passed; a skipped gpu job counts only
+    # when the caller turned the GPU variants off. Cancelling the run before
+    # this job starts stops the release.
+    if: >-
+      !cancelled() && needs.guard.outputs.state == 'new' && needs.build.result == 'success' &&
+      (needs.gpu.result == 'success' || (needs.gpu.result == 'skipped' && !inputs.gpu))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      IMAGE: ${{ needs.guard.outputs.image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install pinned tools
+        run: |
+          ci/install-tools.sh cosign oras crane
+          echo "$PWD/.tools/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch every staged digest, SBOM and report
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: staged-*
+          merge-multiple: true
+          path: out
+
+      - name: Log in to the registry
+        env:
+          HARBOR_USERNAME: ${{ secrets.HARBOR_USERNAME }}
+          HARBOR_PASSWORD: ${{ secrets.HARBOR_PASSWORD }}
+        run: printf '%s' "$HARBOR_PASSWORD" | docker login --username "$HARBOR_USERNAME" --password-stdin "${IMAGE%%/*}"
+
+      # The signing identity is this file, whichever image repo called it;
+      # the certificate also names that repo, its branch and the commit.
+      - name: Attest, verify, tag and release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 ci/release.py publish --tag-prefix "$TAG_PREFIX" ${SKIP_GPU:+--skip-gpu} \
+            --out out --ref "$GITHUB_REF" --revision "$GITHUB_SHA" --github-repo "$GITHUB_REPOSITORY" \
+            --identity-regexp '^https://github\.com/idss-mesa/mesa-updater/\.github/workflows/mesa-release\.yml@'
+
+      - name: Log out of the registry
+        if: always()
+        run: docker logout "${IMAGE%%/*}"
+
+      - name: Upload the release files
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release
+          path: out/release/
+          if-no-files-found: ignore
+          retention-days: 14

@@ -1,17 +1,33 @@
 #!/usr/bin/env bash
 # Attest a CycloneDX SBOM to an image digest, then write the OCI referrers
 # fallback tag that Harbor 2.9.0 needs (ci/README.md, docs/harbor-referrers.md).
+#
+#   attach_sbom.sh <repo>@sha256:<64 hex> <image.cdx.json>
+#   attach_sbom.sh --index-only <repo>@sha256:<64 hex>
+#
+# --index-only signs nothing: it rewrites the fallback tag from the referrers
+# the registry already has (exit 3 when there are none). It repairs a run that
+# died between the attestation and the tag.
 set -euo pipefail
 
 die() { echo "attach_sbom: $1" >&2; exit "${2:-1}"; }
 
-[[ $# -eq 2 ]] || die "usage: attach_sbom.sh <repo>@sha256:<64 hex> <image.cdx.json>" 2
-ref=$1 sbom=$2
+usage="usage: attach_sbom.sh <repo>@sha256:<64 hex> <image.cdx.json>
+       attach_sbom.sh --index-only <repo>@sha256:<64 hex>"
+index_only=
+if [[ ${1:-} == --index-only ]]; then
+  index_only=1
+  shift
+  [[ $# -eq 1 ]] || die "$usage" 2
+else
+  [[ $# -eq 2 ]] || die "$usage" 2
+fi
+ref=$1 sbom=${2:-}
 [[ $ref =~ ^([A-Za-z0-9.-]+(:[0-9]+)?(/[a-z0-9._-]+)+)@sha256:([0-9a-f]{64})$ ]] ||
   die "'$ref' is not <registry>/<repository>@sha256:<64 hex>" 2
 repo=${BASH_REMATCH[1]} hex=${BASH_REMATCH[4]}
 digest=sha256:$hex
-[[ -f $sbom && -r $sbom ]] || die "cannot read SBOM '$sbom'" 2
+[[ -n $index_only ]] || [[ -f $sbom && -r $sbom ]] || die "cannot read SBOM '$sbom'" 2
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 tmp=$(mktemp -d)
@@ -76,10 +92,24 @@ build_index() {
 # Everything that can fail on what is already there fails here, before anything
 # is signed: a referrer that cannot be fetched or indexed would otherwise stop
 # every run after its attestation was pushed, and each retry would add another.
+push_index() { # index file, list of referrers
+  oras manifest push --media-type application/vnd.oci.image.index.v1+json "$repo:sha256-$hex" "$1"
+  echo "attach_sbom: $repo:sha256-$hex lists $(wc -l <"$2") referrer(s) of $digest"
+}
+
 list_referrers "$tmp/before"
 fetch "$tmp/before"
 if [[ -s $tmp/before ]]; then
   build_index "$tmp/before" "$tmp/preflight.json"
+fi
+
+if [[ -n $index_only ]]; then
+  if [[ ! -s $tmp/before ]]; then
+    echo "attach_sbom: the registry lists no referrer of $ref"
+    exit 3
+  fi
+  push_index "$tmp/preflight.json" "$tmp/before"
+  exit 0
 fi
 
 attest=(attest --type cyclonedx --predicate "$sbom")
@@ -94,5 +124,4 @@ list_referrers "$tmp/after"
 
 fetch "$tmp/after"
 build_index "$tmp/after" "$tmp/index.json"
-oras manifest push --media-type application/vnd.oci.image.index.v1+json "$repo:sha256-$hex" "$tmp/index.json"
-echo "attach_sbom: $repo:sha256-$hex lists $(wc -l <"$tmp/after") referrer(s) of $digest"
+push_index "$tmp/index.json" "$tmp/after"

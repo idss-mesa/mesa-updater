@@ -4,6 +4,7 @@
 #   ci/mesa-ci.sh check                     static checks (no Docker)
 #   VARIANT=cpu ci/mesa-ci.sh build         build the variant as a local image
 #   VARIANT=cpu ci/mesa-ci.sh test          run the variant's test script
+#   VARIANT=cpu ci/mesa-ci.sh push          push the local image under a staging tag
 #   VARIANT=cpu ci/mesa-ci.sh sbom          scan, cross-check, write the SBOM
 #
 # Run from the image repo's root. Reads ./mesa.env and ./VERSION.
@@ -13,12 +14,17 @@
 #   BASE_REF  image the variant builds FROM   (default: the local image of
 #             the variant below it: cpu for sandbox and gpu, gpu for gpu-sandbox)
 #   DIGEST    sha256:... of the pushed image, recorded in the SBOM
-#             (default: the local image ID)
+#             (default: what `push` recorded, else the local image ID)
 #   OUT       directory for SBOMs and reports                   (default out)
 #   STRICT_REVERSE=1  fail when a scanner component is unexplained
+#   STAGE_ID  names the staging tag `push` writes, stage-<STAGE_ID>-<variant>-<arch>
+#             (default: the first 12 characters of the commit)
+#   CHECK_RELEASED=1  `check` also fails when VERSION is already released
+#             (git tag vX.Y.Z on origin) and the image's files differ from it
 #
-# Needs docker; `sbom` also needs syft and crane (ci/install-tools.sh puts
-# them in ./.tools/bin, which is added to PATH here).
+# Needs docker; `push` needs crane and a registry login; `sbom` needs syft
+# and crane (ci/install-tools.sh puts them in ./.tools/bin, which is added to
+# PATH here).
 set -euo pipefail
 
 die() { echo "mesa-ci: $*" >&2; exit 1; }
@@ -59,8 +65,26 @@ variants_for_arch() { # every variant this repo publishes for $1
   if [ "$1" = amd64 ]; then echo cpu sandbox gpu gpu-sandbox; else echo cpu; fi
 }
 
+# A change to what goes into an image must come with a new VERSION: merging
+# a new VERSION is what releases, and a released version is never rebuilt.
+# Compared with the released tag itself, so it holds whatever the branch is
+# based on. An unreachable origin is an error, not "not released".
+check_released() {
+  local tags changed
+  tags=$(git ls-remote --tags origin "refs/tags/v$version") || die "cannot list the tags of origin (is v$version released?)"
+  if [ -z "$tags" ]; then echo "check: VERSION $version is not released yet"; return 0; fi
+  git fetch --quiet --depth 1 origin "refs/tags/v$version" || die "cannot fetch tag v$version from origin"
+  changed=$(git diff --name-only FETCH_HEAD HEAD -- "$context" gpu sandbox ':!*.md') || die "cannot compare with tag v$version"
+  if [ -n "$changed" ]; then
+    echo "  ${changed//$'\n'/$'\n'  }" >&2
+    die "these image files differ from the released v$version: raise VERSION"
+  fi
+  echo "check: the image files are those of the released v$version"
+}
+
 cmd_check() {
   ( cd "$ci" && sha256sum --check --quiet SHARED.sha256 ) || die "a shared file in ci/ differs from ci/SHARED.sha256 (copy it again from idss-mesa/mesa-updater)"
+  [ -z "${CHECK_RELEASED:-}" ] || check_released
   local a v tmp
   tmp=$(mktemp -d)
   # shellcheck disable=SC2064
@@ -82,10 +106,16 @@ cmd_build() {
     gpu-sandbox) dir=sandbox; base=${BASE_REF:-$(local_tag gpu)} ;;
   esac
   [ "$variant" = cpu ] || args+=(--build-arg "BASE_IMAGE=$base")
+  mkdir -p "$out/$variant-$arch"
+  rm -f "$out/$variant-$arch/digest" "$out/$variant-$arch/base"   # of an image this build replaces
   if [ "$variant" = cpu ]; then
     args+=(--build-arg "MESA_VERSION=v$version" --build-arg "MESA_REVISION=$(git rev-parse HEAD)")
   fi
-  docker buildx build --platform "linux/$arch" "${args[@]}" -t "$(local_tag "$variant")" --load "$dir"
+  # No provenance attestation: with it some image stores push an index, and
+  # the digest recorded by `push` must be the image manifest itself.
+  docker buildx build --platform "linux/$arch" --provenance=false "${args[@]}" -t "$(local_tag "$variant")" --load "$dir"
+  # A release proves each variant was built on the staged image below it.
+  if [[ ${base:-} =~ @(sha256:[0-9a-f]{64})$ ]]; then echo "${BASH_REMATCH[1]}" > "$out/$variant-$arch/base"; fi
   echo "build: $(local_tag "$variant") $(docker image inspect -f '{{.Id}}' "$(local_tag "$variant")")"
 }
 
@@ -103,6 +133,23 @@ cmd_test() {
   esac
 }
 
+# Push the local image under a staging tag and record the digest the registry
+# gave it. Staging tags are not what anyone pulls: a release or rolling
+# workflow tags the digest once every variant has passed.
+cmd_push() {
+  local stage digest kind
+  stage="$image:stage-${STAGE_ID:-$(git rev-parse --short=12 HEAD)}-$variant-$arch"
+  docker tag "$(local_tag "$variant")" "$stage"
+  docker push --quiet "$stage"
+  digest=$(crane digest "$stage")
+  [[ $digest =~ ^sha256:[0-9a-f]{64}$ ]] || die "crane digest $stage printed '$digest'"
+  kind=$(crane manifest "$stage" | python -c 'import json, sys; print("index" if "manifests" in json.load(sys.stdin) else "image")')
+  [ "$kind" = image ] || die "$stage is an image index, not a single image: the build must push one manifest"
+  mkdir -p "$out/$variant-$arch"
+  echo "$digest" > "$out/$variant-$arch/digest"
+  echo "push: $stage $digest"
+}
+
 # Diff IDs of the digest-pinned base image named by the CPU Dockerfile, for
 # the platform being checked: what the scanner finds there is the base's.
 base_layers() {
@@ -118,7 +165,7 @@ cmd_sbom() {
   tag=$(local_tag "$variant")
   dir="$out/$variant-$arch"
   mkdir -p "$dir"
-  digest=${DIGEST:-$(docker image inspect -f '{{.Id}}' "$tag")}
+  digest=${DIGEST:-$(cat "$dir/digest" 2>/dev/null || docker image inspect -f '{{.Id}}' "$tag")}
   [ -z "${STRICT_REVERSE:-}" ] || strict=(--strict-reverse)
   [ ! -f sbom/allow.tsv ] || allow=(--allow sbom/allow.tsv)
   [ ! -f sbom/extras.cdx.json ] || extras=(--extras sbom/extras.cdx.json)
@@ -145,6 +192,7 @@ case ${1:-} in
   check) cmd_check ;;
   build) cmd_build ;;
   test) cmd_test ;;
+  push) cmd_push ;;
   sbom) cmd_sbom ;;
-  *) sed -n '2,22p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2; exit 2 ;;
+  *) sed -n '2,28p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2; exit 2 ;;
 esac
