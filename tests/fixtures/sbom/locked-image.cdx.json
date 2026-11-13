@@ -1,0 +1,1856 @@
+{
+ "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:6f796695-e1d2-4e7b-b94c-01710f946972",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2026-11-12T17:31:34-07:00",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "author": "anchore",
+     "name": "syft",
+     "version": "1.57.1"
+    }
+   ]
+  },
+  "component": {
+   "bom-ref": "ebb3c1b7d83048ed",
+   "type": "container",
+   "name": "mesa-cli",
+   "version": "locked-test"
+  },
+  "properties": [
+   {
+    "name": "syft:image:labels:maintainer",
+    "value": "Jupyter Project <jupyter@googlegroups.com>"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.base.name",
+    "value": "quay.io/jupyter/minimal-notebook:2026-11-10@sha256:29076b0b96c954a16b813cc5c4230f248711ef1d7528cb1208b82397e86a8b52"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.created",
+    "value": "2026-10-25T10:26:07.538865+00:00"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.description",
+    "value": "CyVerse VICE cloud shell (ttyd) with agent CLIs, geospatial conda env, mesa-mcp"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.revision",
+    "value": "unknown"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.source",
+    "value": "https://github.com/idss-mesa/cli"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.title",
+    "value": "MESA Cloud Shell"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.url",
+    "value": "https://github.com/idss-mesa/cli"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.vendor",
+    "value": "CyVerse"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.version",
+    "value": "dev"
+   }
+  ]
+ },
+ "components": [
+  {
+   "bom-ref": "pkg:pypi/interface-meta@1.3.0?package-id=b034a2a3442d4ba3",
+   "type": "library",
+   "author": "Matthew Wardrop <mpwardrop@gmail.com>",
+   "name": "interface-meta",
+   "version": "1.3.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:matthew_wardrop_project:python-interface-meta:1.3.0:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/interface-meta@1.3.0",
+   "externalReferences": [
+    {
+     "url": "file:///home/conda/feedstock_root/build_artifacts/interface_meta_1734284382083/work",
+     "type": "vcs"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop_project:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardropproject:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardropproject:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface-meta:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface-meta:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface_meta:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface_meta:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop_project:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop_project:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop_project:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop_project:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardropproject:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardropproject:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardropproject:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardropproject:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface-meta:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface-meta:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface_meta:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface_meta:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface-meta:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface-meta:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface_meta:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface_meta:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop_project:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop_project:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardropproject:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardropproject:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-interface:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_interface:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:matthew_wardrop:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface-meta:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface-meta:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface_meta:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface_meta:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:interface:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mpwardrop:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:interface-meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:interface_meta:1.3.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/interface_meta-1.3.0.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/interface_meta-1.3.0.dist-info/RECORD"
+    },
+    {
+     "name": "syft:location:2:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:2:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/interface_meta-1.3.0.dist-info/direct_url.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/python-dateutil@2.9.0.post0?package-id=68e522491c8c7436",
+   "type": "library",
+   "author": "Gustavo Niemeyer <gustavo@niemeyer.net>",
+   "name": "python-dateutil",
+   "version": "2.9.0.post0",
+   "licenses": [
+    {
+     "license": {
+      "name": "Dual License"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:gustavo_niemeyer_project:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/python-dateutil@2.9.0.post0",
+   "externalReferences": [
+    {
+     "url": "file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work",
+     "type": "vcs"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_niemeyer_project:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_niemeyerproject:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_niemeyerproject:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_niemeyer:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_niemeyer:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_project:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo_project:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-dateutil:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-dateutil:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_dateutil:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_dateutil:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavoproject:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavoproject:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:gustavo:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_dateutil:2.9.0.post0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/python_dateutil-2.9.0.post0.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/python_dateutil-2.9.0.post0.dist-info/RECORD"
+    },
+    {
+     "name": "syft:location:2:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:2:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/python_dateutil-2.9.0.post0.dist-info/direct_url.json"
+    },
+    {
+     "name": "syft:location:3:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:3:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/python_dateutil-2.9.0.post0.dist-info/top_level.txt"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/packaging@26.3?package-id=329abdf0612eea79",
+   "type": "library",
+   "author": "Donald Stufft <donald@stufft.io>",
+   "name": "packaging",
+   "version": "26.3",
+   "licenses": [
+    {
+     "expression": "Apache-2.0 OR BSD-2-Clause"
+    }
+   ],
+   "cpe": "cpe:2.3:a:donald_stufft_\\<donald_project:python-packaging:26.3:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/packaging@26.3",
+   "externalReferences": [
+    {
+     "url": "file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work",
+     "type": "vcs"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/packaging-26.3.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/packaging-26.3.dist-info/RECORD"
+    },
+    {
+     "name": "syft:location:2:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:2:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/packaging-26.3.dist-info/direct_url.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/packaging@26.0?package-id=860ac32b38ab004d",
+   "type": "library",
+   "author": "Donald Stufft <donald@stufft.io>",
+   "name": "packaging",
+   "version": "26.0",
+   "licenses": [
+    {
+     "expression": "Apache-2.0 OR BSD-2-Clause"
+    }
+   ],
+   "cpe": "cpe:2.3:a:donald_stufft_\\<donald_project:python-packaging:26.0:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/packaging@26.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:packaging:26.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/setuptools/_vendor/packaging-26.0.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/setuptools/_vendor/packaging-26.0.dist-info/RECORD"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/packaging@26.3?package-id=1853651bff69148b",
+   "type": "library",
+   "author": "Donald Stufft <donald@stufft.io>",
+   "name": "packaging",
+   "version": "26.3",
+   "licenses": [
+    {
+     "expression": "Apache-2.0 OR BSD-2-Clause"
+    }
+   ],
+   "cpe": "cpe:2.3:a:donald_stufft_\\<donald_project:python-packaging:26.3:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/packaging@26.3",
+   "externalReferences": [
+    {
+     "url": "file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work",
+     "type": "vcs"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald_project:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donaldproject:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald-stufft-\\<donald:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:donald_stufft_\\<donald:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:packaging:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:packaging:26.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:167005a09f4c030c980df61920105a76e344e20f7b3622f80337c18408ed9994"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/lib/python3.13/site-packages/packaging-26.3.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:167005a09f4c030c980df61920105a76e344e20f7b3622f80337c18408ed9994"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/lib/python3.13/site-packages/packaging-26.3.dist-info/RECORD"
+    },
+    {
+     "name": "syft:location:2:layerID",
+     "value": "sha256:167005a09f4c030c980df61920105a76e344e20f7b3622f80337c18408ed9994"
+    },
+    {
+     "name": "syft:location:2:path",
+     "value": "/opt/conda/lib/python3.13/site-packages/packaging-26.3.dist-info/direct_url.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/pdal@3.5.3?package-id=484fdc6e94ca8e48",
+   "type": "library",
+   "author": "Howard Butler <Unknown <howard@hobu.co>>",
+   "name": "pdal",
+   "version": "3.5.3",
+   "licenses": [
+    {
+     "license": {
+      "id": "BSD-3-Clause"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:unknown_\\<howard_project:python-pdal:3.5.3:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/pdal@3.5.3",
+   "externalReferences": [
+    {
+     "url": "file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-pdal_1757343766/work",
+     "type": "vcs"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howard_project:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howardproject:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howardproject:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler_project:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler_project:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butlerproject:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butlerproject:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howard_project:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown-\\<howard:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown-\\<howard:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howard:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howard:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howardproject:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler_project:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butlerproject:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-pdal:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-pdal:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_pdal:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_pdal:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown-\\<howard:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:unknown_\\<howard:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:howard_butler:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:pdal:python-pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:pdal:python_pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python-pdal:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python_pdal:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:pdal:pdal:3.5.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/pdal-3.5.3.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/pdal-3.5.3.dist-info/RECORD"
+    },
+    {
+     "name": "syft:location:2:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:2:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/pdal-3.5.3.dist-info/direct_url.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:pypi/urllib3@2.8.0?package-id=cf90e8610767cacc",
+   "type": "library",
+   "author": "Andrey Petrov <andrey.petrov@shazow.net>",
+   "name": "urllib3",
+   "version": "2.8.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:python:urllib3:2.8.0:*:*:*:*:*:*:*",
+   "purl": "pkg:pypi/urllib3@2.8.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "python-installed-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "python"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "python-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:494ee45c9417f2f57d54172235d15c2b990e5a41447cb957eb62cb8e12769bcc"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/urllib3-2.8.0.dist-info/METADATA"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:494ee45c9417f2f57d54172235d15c2b990e5a41447cb957eb62cb8e12769bcc"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/python3.10/site-packages/urllib3-2.8.0.dist-info/RECORD"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:generic/python@3.10.22?package-id=aec3e001950b1d78",
+   "type": "application",
+   "name": "python",
+   "version": "3.10.22",
+   "cpe": "cpe:2.3:a:python_software_foundation:python:3.10.22:*:*:*:*:*:*:*",
+   "purl": "pkg:generic/python@3.10.22",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "binary-classifier-cataloger"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "binary"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "binary-signature"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:python:python:3.10.22:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/bin/python3.10"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/lib/libpython3.10.so.1.0"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:generic/openssl@3.6.5?package-id=e107f34261fd9ed0",
+   "type": "application",
+   "name": "openssl",
+   "version": "3.6.5",
+   "cpe": "cpe:2.3:a:openssl:openssl:3.6.5:*:*:*:*:*:*:*",
+   "purl": "pkg:generic/openssl@3.6.5",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "binary-classifier-cataloger"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "binary"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "binary-signature"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:167005a09f4c030c980df61920105a76e344e20f7b3622f80337c18408ed9994"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/bin/openssl"
+    },
+    {
+     "name": "syft:location:1:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:1:path",
+     "value": "/opt/conda/envs/geospatial/bin/openssl"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/js@1.0.0?package-id=dc74ffc23a8edc9d",
+   "type": "library",
+   "name": "js",
+   "version": "1.0.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "ISC"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:js:js:1.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/js@1.0.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:5342b7ac3b569887ed7646959dadf40392e33f27fc01aec9761733feb32be93d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/opt/conda/envs/geospatial/share/hwloc/hwloc-ps.www/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/mesa-agent-clis@0.0.0?package-id=033abe2e2fe9025f",
+   "type": "library",
+   "name": "mesa-agent-clis",
+   "version": "0.0.0",
+   "description": "Global agent CLIs for the MESA images, locked",
+   "cpe": "cpe:2.3:a:mesa-agent-clis:mesa-agent-clis:0.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/mesa-agent-clis@0.0.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa-agent-clis:mesa_agent_clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa_agent_clis:mesa-agent-clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa_agent_clis:mesa_agent_clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa-agent:mesa-agent-clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa-agent:mesa_agent_clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa_agent:mesa-agent-clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa_agent:mesa_agent_clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa:mesa-agent-clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:mesa:mesa_agent_clis:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:61d296ac56206a777e4eedab584f8830b38c489411ef80ac4c107e7f18a89440"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/pino@10.4.0?package-id=d1f9191c71a8a716",
+   "type": "library",
+   "author": "Matteo Collina <hello@matteocollina.com>, David Mark Clements <huperekchuno@googlemail.com>, James Sumners <james.sumners@gmail.com>, Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)",
+   "name": "pino",
+   "version": "10.4.0",
+   "description": "super fast, all natural json logger",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:pino:pino:10.4.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/pino@10.4.0",
+   "externalReferences": [
+    {
+     "url": "git+https://github.com/pinojs/pino.git",
+     "type": "distribution"
+    },
+    {
+     "url": "https://getpino.io",
+     "type": "website"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/pino/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/transport@0.0.1?package-id=c3e7fc03ca9e9c2c",
+   "type": "library",
+   "name": "transport",
+   "version": "0.0.1",
+   "cpe": "cpe:2.3:a:transport:transport:0.0.1:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/transport@0.0.1",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/pino/test/fixtures/transport/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/ajv@8.20.0?package-id=8fdae75a756f6e47",
+   "type": "library",
+   "author": "Evgeny Poberezkin",
+   "name": "ajv",
+   "version": "8.20.0",
+   "description": "Another JSON Schema Validator",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:ajv:ajv:8.20.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/ajv@8.20.0",
+   "externalReferences": [
+    {
+     "url": "https://ajv.js.org",
+     "type": "website"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/ajv/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/fast-uri@3.1.9?package-id=d6d00573e4eeeffb",
+   "type": "library",
+   "author": "Vincent Le Goff <vince.legoff@gmail.com> (https://github.com/zekth), Matteo Collina <hello@matteocollina.com>, G\u00fcrg\u00fcn Day\u0131o\u011flu <hey@gurgun.day> (https://heyhey.to/G), Aras Abbasi <aras.abbasi@gmail.com>, Frazer Smith <frazer.dev@icloud.com> (https://github.com/fdawgs)",
+   "name": "fast-uri",
+   "version": "3.1.9",
+   "description": "Dependency-free RFC 3986 URI toolbox",
+   "licenses": [
+    {
+     "license": {
+      "id": "BSD-3-Clause"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:openjsf:fast-uri:3.1.9:*:*:*:*:node.js:*:*",
+   "purl": "pkg:npm/fast-uri@3.1.9",
+   "externalReferences": [
+    {
+     "url": "git+https://github.com/fastify/fast-uri.git",
+     "type": "distribution"
+    },
+    {
+     "url": "https://github.com/fastify/fast-uri",
+     "type": "website"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/ajv/node_modules/fast-uri/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/benchmark@1.0.0?package-id=232708126db0d4cb",
+   "type": "library",
+   "name": "benchmark",
+   "version": "1.0.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "ISC"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:benchmark:benchmark:1.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/benchmark@1.0.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/ajv/node_modules/fast-uri/benchmark/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/%40fastify/deepmerge@3.2.4?package-id=8f4cd9d4738c074c",
+   "type": "library",
+   "author": "Aras Abbasi <aras.abbasi@gmail.com>, Matteo Collina <hello@matteocollina.com>, Manuel Spigolon <behemoth89@gmail.com>, James Sumners (https://james.sumners.info), Frazer Smith <frazer.dev@icloud.com> (https://github.com/fdawgs)",
+   "name": "@fastify/deepmerge",
+   "version": "3.2.4",
+   "description": "Merges the enumerable properties of two or more objects deeply.",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:\\@fastify\\/deepmerge:\\@fastify\\/deepmerge:3.2.4:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/%40fastify/deepmerge@3.2.4",
+   "externalReferences": [
+    {
+     "url": "git+https://github.com/fastify/deepmerge.git",
+     "type": "distribution"
+    },
+    {
+     "url": "https://github.com/fastify/deepmerge#readme",
+     "type": "website"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:fastify:\\@fastify\\/deepmerge:3.2.4:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/@fastify/deepmerge/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/benchmarks@1.0.0?package-id=a3864ad20fb41085",
+   "type": "library",
+   "name": "benchmarks",
+   "version": "1.0.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "ISC"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:benchmarks:benchmarks:1.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/benchmarks@1.0.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/@fastify/deepmerge/benchmark/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/github-from-package@0.0.0?package-id=3c7fcadd2ed0fcb2",
+   "type": "library",
+   "author": "James Halliday <mail@substack.net> (http://substack.net)",
+   "name": "github-from-package",
+   "version": "0.0.0",
+   "description": "return the github url from a package.json file",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:github-from-package:github-from-package:0.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/github-from-package@0.0.0",
+   "externalReferences": [
+    {
+     "url": "git://github.com/substack/github-from-package.git",
+     "type": "distribution"
+    },
+    {
+     "url": "https://github.com/substack/github-from-package",
+     "type": "website"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github-from-package:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github_from_package:github-from-package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github_from_package:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github-from:github-from-package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github-from:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github_from:github-from-package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github_from:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:substack:github-from-package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:substack:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github:github-from-package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:github:github_from_package:0.0.0:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/github-from-package/package.json"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:npm/beep-boop@1.2.3?package-id=6011fc95f038837d",
+   "type": "library",
+   "name": "beep-boop",
+   "version": "1.2.3",
+   "cpe": "cpe:2.3:a:beep-boop:beep-boop:1.2.3:*:*:*:*:*:*:*",
+   "purl": "pkg:npm/beep-boop@1.2.3",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "javascript-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "javascript"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "npm"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "javascript-npm-package"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:beep-boop:beep_boop:1.2.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:beep_boop:beep-boop:1.2.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:beep_boop:beep_boop:1.2.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:beep:beep-boop:1.2.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:cpe23",
+     "value": "cpe:2.3:a:beep:beep_boop:1.2.3:*:*:*:*:*:*:*"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:93ecad689225cfa75eede08836656bc9e3fc69f93e9502769df192f2cbe1e116"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/home/jovyan/.npm-global/lib/node_modules/github-from-package/example/package.json"
+    }
+   ]
+  }
+ ],
+ "dependencies": []
+}

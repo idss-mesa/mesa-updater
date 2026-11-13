@@ -1,0 +1,63 @@
+{
+  "arch": "x86_64",
+  "build": "py310hd8f1fbe_8",
+  "build_number": 8,
+  "build_string": "py310hd8f1fbe_8",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=12",
+    "libstdcxx-ng >=12",
+    "python >=3.10,<3.11.0a0",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.0.9-py310hd8f1fbe_8",
+  "files": [
+    "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/INSTALLER",
+    "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/LICENSE",
+    "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/METADATA"
+  ],
+  "fn": "brotli-python-1.0.9-py310hd8f1fbe_8.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.0.9-py310hd8f1fbe_8",
+    "type": 1
+  },
+  "md5": "e3852120550a5c510af6f3dd3de391b8",
+  "name": "brotli-python",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.0.9-py310hd8f1fbe_8.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+        "sha256_in_prefix": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+        "size_in_bytes": 1084
+      },
+      {
+        "_path": "lib/python3.10/site-packages/Brotli-1.0.9.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "7d1dce650d5f97857af281a7613b481b137da87bc7c53fa13862ba0768b9ae3c",
+        "sha256_in_prefix": "7d1dce650d5f97857af281a7613b481b137da87bc7c53fa13862ba0768b9ae3c",
+        "size_in_bytes": 1357
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "a8dddc63315c2377dfb31f15e0f7dbb6646ad31555c4e0972e197c80548c44f5",
+  "size": 361495,
+  "subdir": "linux-64",
+  "timestamp": 1666788789,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/brotli-python-1.0.9-py310hd8f1fbe_8.tar.bz2",
+  "version": "1.0.9"
+}

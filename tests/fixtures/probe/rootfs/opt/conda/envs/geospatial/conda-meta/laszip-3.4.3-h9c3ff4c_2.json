@@ -1,0 +1,61 @@
+{
+  "arch": "x86_64",
+  "build": "h9c3ff4c_2",
+  "build_number": 2,
+  "build_string": "h9c3ff4c_2",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=9.4.0",
+    "libstdcxx-ng >=9.4.0"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/laszip-3.4.3-h9c3ff4c_2",
+  "files": [
+    "include/laszip/laszip_api.h",
+    "include/laszip/laszip_api_version.h",
+    "lib/liblaszip.so"
+  ],
+  "fn": "laszip-3.4.3-h9c3ff4c_2.tar.bz2",
+  "license": "LGPL-2.1-or-later",
+  "license_family": "LGPL",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/laszip-3.4.3-h9c3ff4c_2",
+    "type": 1
+  },
+  "md5": "f99abefd6976c4b1ca3c976b1a86d34c",
+  "name": "laszip",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/laszip-3.4.3-h9c3ff4c_2.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/laszip/laszip_api.h",
+        "path_type": "hardlink",
+        "sha256": "9a11732cf659f946c84f9e0b2aa74f89eafd13171f497f8e884ecd9637fd6cc3",
+        "sha256_in_prefix": "9a11732cf659f946c84f9e0b2aa74f89eafd13171f497f8e884ecd9637fd6cc3",
+        "size_in_bytes": 20899
+      },
+      {
+        "_path": "include/laszip/laszip_api_version.h",
+        "path_type": "hardlink",
+        "sha256": "6a209013e0b109f86b883eb082522b5cb7cc8282eb4c99181cf379c2976bbc33",
+        "sha256_in_prefix": "6a209013e0b109f86b883eb082522b5cb7cc8282eb4c99181cf379c2976bbc33",
+        "size_in_bytes": 1104
+      },
+      {
+        "_path": "lib/liblaszip.so",
+        "path_type": "softlink",
+        "sha256_in_prefix": "4daf236ad8a1d234480ba6703915e289183255bc3676df62684a519b920b3537",
+        "size_in_bytes": 523144
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "laszip",
+  "sha256": "3b2db76ad2d057ba3dc1325609839862c47b818df039063de93ccd11837da204",
+  "size": 189384,
+  "subdir": "linux-64",
+  "timestamp": 1635949664,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/laszip-3.4.3-h9c3ff4c_2.tar.bz2",
+  "version": "3.4.3"
+}

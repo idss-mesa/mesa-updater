@@ -1,0 +1,80 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "components": [
+    {
+      "type": "application",
+      "name": "tini",
+      "version": "0.19.0",
+      "purl": "pkg:github/krallin/tini@v0.19.0",
+      "bom-ref": "pkg:github/krallin/tini@v0.19.0",
+      "hashes": [
+        {"alg": "SHA-256", "content": "93dcc18adc78c65a028a84799ecf8ad40c936fdfc5f2a57b1acda5a8117fa82c"}
+      ],
+      "properties": [
+        {"name": "mesa:lock:kind", "value": "pins"},
+        {"name": "mesa:lock:layer", "value": "cpu"},
+        {"name": "mesa:lock:file", "value": "ci/pins.tsv"},
+        {"name": "mesa:lock:path", "value": "/usr/bin/tini"},
+        {"name": "mesa:lock:probe", "value": "tini --version"}
+      ]
+    },
+    {
+      "type": "application",
+      "name": "go",
+      "version": "1.27.3",
+      "purl": "pkg:golang/go@1.27.3",
+      "bom-ref": "pkg:golang/go@1.27.3",
+      "hashes": [
+        {"alg": "SHA-256", "content": "65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40"}
+      ],
+      "properties": [
+        {"name": "mesa:lock:kind", "value": "pins"},
+        {"name": "mesa:lock:layer", "value": "cpu"},
+        {"name": "mesa:lock:file", "value": "ci/pins.tsv"},
+        {"name": "mesa:lock:path", "value": "/usr/local/go"},
+        {"name": "mesa:lock:probe", "value": "go version"}
+      ]
+    },
+    {
+      "type": "application",
+      "name": "ttyd",
+      "version": "1.7.70",
+      "purl": "pkg:github/tsl0922/ttyd@1.7.70",
+      "bom-ref": "pkg:github/tsl0922/ttyd@1.7.70",
+      "properties": [
+        {"name": "mesa:lock:kind", "value": "pins"},
+        {"name": "mesa:lock:layer", "value": "cpu"},
+        {"name": "mesa:lock:file", "value": "ci/pins.tsv"},
+        {"name": "mesa:lock:probe", "value": "ttyd --version"}
+      ]
+    },
+    {
+      "type": "application",
+      "name": "awscli",
+      "version": "2.38.5",
+      "purl": "pkg:generic/awscli@2.38.5",
+      "bom-ref": "pkg:generic/awscli@2.38.5",
+      "properties": [
+        {"name": "mesa:lock:kind", "value": "pins"},
+        {"name": "mesa:lock:layer", "value": "cpu"},
+        {"name": "mesa:lock:file", "value": "ci/pins.tsv"},
+        {"name": "mesa:lock:path", "value": "/usr/local/aws-cli"}
+      ]
+    },
+    {
+      "type": "library",
+      "name": "python",
+      "version": "3.13.18",
+      "purl": "pkg:conda/python@3.13.18?build=hf47f18c_100_cp313&channel=conda-forge&subdir=linux-64&type=conda",
+      "bom-ref": "pkg:conda/python@3.13.18?build=hf47f18c_100_cp313&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda",
+      "properties": [
+        {"name": "mesa:lock:kind", "value": "conda"},
+        {"name": "mesa:lock:layer", "value": "cpu"},
+        {"name": "mesa:lock:file", "value": "sbom/conda-base.amd64.lock"},
+        {"name": "mesa:lock:prefix", "value": "/opt/conda"}
+      ]
+    }
+  ]
+}

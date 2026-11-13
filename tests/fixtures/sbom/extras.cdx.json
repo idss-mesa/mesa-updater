@@ -1,0 +1,39 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "version": 1,
+ "components": [
+  {
+   "type": "application",
+   "bom-ref": "duckdb-cli",
+   "name": "duckdb",
+   "version": "v2.0.0",
+   "description": "DuckDB CLI in /usr/local/bin, downloaded by bash/Dockerfile (ARG DUCKDB_VERSION, DUCKDB_SHA256_AMD64)",
+   "purl": "pkg:github/duckdb/duckdb@v2.0.0",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c6507206baf7793c6013dbd82368469a45f20dc0e17a6f92f204602f652ed2bc"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://github.com/duckdb/duckdb/releases/download/v2.0.0/duckdb-cli-linux-amd64.tar.gz"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "irods-mcp-server",
+   "version": "main",
+   "description": "Built in bash/Dockerfile from a shallow clone of https://github.com/idss-mesa/irods-mcp-server; no version is pinned",
+   "externalReferences": [
+    {
+     "type": "vcs",
+     "url": "https://github.com/idss-mesa/irods-mcp-server"
+    }
+   ]
+  }
+ ]
+}

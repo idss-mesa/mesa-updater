@@ -1,0 +1,6 @@
+# code-server extensions of mesa-vscode; sha256 of the .vsix on open-vsx.org
+# publisher.name	version	sha256
+ms-python.python	2026.4.0	232aeafb01f069824fdd92d3e628c1c442bbcfa1d3cc945ff97076340bb2b4a6
+ms-toolsai.jupyter-keymap	1.1.2	3d2998929bb43156f3b428116aee290543c437875df616ec755692219b4afa17
+saoudrizwan.claude-dev	4.1.26	d8ea4c3505052c48e7c7a5558e7213a53827b6ba1da7e56513c87d896df51c4d
+vscode-icons-team.vscode-icons	13.0.0	89aa767f87f09dc966efe2e70bed20321d5cb5b2f43fd413598fb6913a9f99c5

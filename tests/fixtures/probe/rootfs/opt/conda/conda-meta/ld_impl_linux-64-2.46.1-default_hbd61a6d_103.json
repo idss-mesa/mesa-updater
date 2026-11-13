@@ -1,0 +1,54 @@
+{
+  "arch": "x86_64",
+  "build": "default_hbd61a6d_103",
+  "build_number": 103,
+  "build_string": "default_hbd61a6d_103",
+  "channel": "conda-forge",
+  "constrains": [
+    "binutils_impl_linux-64 2.46.1"
+  ],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103",
+  "files": [
+    "bin/x86_64-conda-linux-gnu-ld",
+    "x86_64-conda-linux-gnu/bin/ld"
+  ],
+  "fn": "ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda",
+  "license": "GPL-3.0-only",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103",
+    "type": 1
+  },
+  "md5": "2362c70e7e79827c32db35547d9c179b",
+  "name": "ld_impl_linux-64",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/x86_64-conda-linux-gnu-ld",
+        "path_type": "hardlink",
+        "sha256": "a2879a9731782ec1462e65cff810d48e9b61349392fc107729595e89333e61ee",
+        "sha256_in_prefix": "f17b26f6a96e67f6d35db226455bad9eb1619ac6983cc58b72dca2cf41cb1c1c",
+        "size_in_bytes": 2966864
+      },
+      {
+        "_path": "x86_64-conda-linux-gnu/bin/ld",
+        "path_type": "softlink",
+        "sha256_in_prefix": "f17b26f6a96e67f6d35db226455bad9eb1619ac6983cc58b72dca2cf41cb1c1c",
+        "size_in_bytes": 2966864
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "901649b1edbe841fd4ee7e2d491a05184ed540eb01cdae506872f344babc1d28",
+  "size": 742109,
+  "subdir": "linux-64",
+  "timestamp": 1791565468,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda",
+  "version": "2.46.1"
+}

@@ -1,0 +1,61 @@
+{
+  "arch": null,
+  "build": "pyh9f0ad1d_0",
+  "build_number": 0,
+  "build_string": "pyh9f0ad1d_0",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "python"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/rfc3986-validator-0.1.1-pyh9f0ad1d_0",
+  "files": [
+    "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/AUTHORS.rst",
+    "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/INSTALLER",
+    "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/LICENSE"
+  ],
+  "fn": "rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/rfc3986-validator-0.1.1-pyh9f0ad1d_0",
+    "type": 1
+  },
+  "md5": "912a71cc01012ee38e6b90ddd561e36f",
+  "name": "rfc3986-validator",
+  "noarch": "python",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/AUTHORS.rst",
+        "path_type": "hardlink",
+        "sha256": "42ec0c4be6eb89016e3c756660ff474d2924225d0723c82720285ede0a46e5f3",
+        "sha256_in_prefix": "42ec0c4be6eb89016e3c756660ff474d2924225d0723c82720285ede0a46e5f3",
+        "size_in_bytes": 162
+      },
+      {
+        "_path": "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "lib/python3.13/site-packages/rfc3986_validator-0.1.1.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+        "sha256_in_prefix": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+        "size_in_bytes": 1074
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": null,
+  "requested_spec": "",
+  "sha256": "2a5b495a1de0f60f24d8a74578ebc23b24aa53279b1ad583755f223097c41c37",
+  "size": 7818,
+  "subdir": "noarch",
+  "timestamp": 1598024297,
+  "url": "https://conda.anaconda.org/conda-forge/noarch/rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2",
+  "version": "0.1.1"
+}

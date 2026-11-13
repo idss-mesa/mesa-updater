@@ -1,0 +1,10 @@
+# R packages in /usr/local/lib/R/site-library (cut of the mesa-rstudio scan)
+# name	version
+BH	1.90.0-1
+DBI	1.3.0
+R6	2.6.1
+Rcpp	1.1.2
+data.table	1.18.6.1
+duckdb	2.0.0
+sf	1.1-3
+terra	1.9-50

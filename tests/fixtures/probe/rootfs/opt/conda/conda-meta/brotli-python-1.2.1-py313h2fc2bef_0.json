@@ -1,0 +1,66 @@
+{
+  "arch": "x86_64",
+  "build": "py313h2fc2bef_0",
+  "build_number": 0,
+  "build_string": "py313h2fc2bef_0",
+  "channel": "conda-forge",
+  "constrains": [
+    "libbrotlicommon 1.2.1 h39a168f_0"
+  ],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=15",
+    "libstdcxx >=15",
+    "python >=3.13,<3.14.0a0",
+    "python_abi 3.13.* *_cp313"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.2.1-py313h2fc2bef_0",
+  "files": [
+    "lib/python3.13/site-packages/__pycache__/brotli.cpython-313.pyc",
+    "lib/python3.13/site-packages/_brotli.cpython-313-x86_64-linux-gnu.so",
+    "lib/python3.13/site-packages/brotli-1.2.1.dist-info/INSTALLER"
+  ],
+  "fn": "brotli-python-1.2.1-py313h2fc2bef_0.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.2.1-py313h2fc2bef_0",
+    "type": 1
+  },
+  "md5": "fcf55afbed227c7484c4d7174e456657",
+  "name": "brotli-python",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/brotli-python-1.2.1-py313h2fc2bef_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.13/site-packages/__pycache__/brotli.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "f9d8c063375cbc1dd4c4b8d3c348a9ce4ac7531d38f51172c375f5a179aace68",
+        "sha256_in_prefix": "f9d8c063375cbc1dd4c4b8d3c348a9ce4ac7531d38f51172c375f5a179aace68",
+        "size_in_bytes": 1910
+      },
+      {
+        "_path": "lib/python3.13/site-packages/_brotli.cpython-313-x86_64-linux-gnu.so",
+        "path_type": "hardlink",
+        "sha256": "579adf181636b9ddca6c85fdbea3b2fbe1f5d7ccafa25e65392e08391c0c188e",
+        "sha256_in_prefix": "579adf181636b9ddca6c85fdbea3b2fbe1f5d7ccafa25e65392e08391c0c188e",
+        "size_in_bytes": 904048
+      },
+      {
+        "_path": "lib/python3.13/site-packages/brotli-1.2.1.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "bd461d357baf7f14bc8f94caf177cf7a23aa4bdfb698d49582194c942d4f0921",
+  "size": 367017,
+  "subdir": "linux-64",
+  "timestamp": 1792653755,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/brotli-python-1.2.1-py313h2fc2bef_0.conda",
+  "version": "1.2.1"
+}

@@ -1,0 +1,62 @@
+{
+  "arch": null,
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "build_string": "pyhd8ed1ab_0",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "python >=3.6"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/defusedxml-0.7.1-pyhd8ed1ab_0",
+  "files": [
+    "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/INSTALLER",
+    "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/LICENSE",
+    "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/METADATA"
+  ],
+  "fn": "defusedxml-0.7.1-pyhd8ed1ab_0.tar.bz2",
+  "license": "PSF-2.0",
+  "license_family": "PSF",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/defusedxml-0.7.1-pyhd8ed1ab_0",
+    "type": 1
+  },
+  "md5": "961b3a227b437d82ad7054484cfa71b2",
+  "name": "defusedxml",
+  "noarch": "python",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/defusedxml-0.7.1-pyhd8ed1ab_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "b80ce9da8c42a1f91079627fbbe2bf27210ae108a0ffe5f077d5b08e076c24c8",
+        "sha256_in_prefix": "b80ce9da8c42a1f91079627fbbe2bf27210ae108a0ffe5f077d5b08e076c24c8",
+        "size_in_bytes": 2409
+      },
+      {
+        "_path": "lib/python3.13/site-packages/defusedxml-0.7.1.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "369d3cef64870daf849fba711cb8d05a7efe3c8d9ab0f763adc34079fe378bb1",
+        "sha256_in_prefix": "369d3cef64870daf849fba711cb8d05a7efe3c8d9ab0f763adc34079fe378bb1",
+        "size_in_bytes": 32518
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": null,
+  "requested_spec": "",
+  "sha256": "9717a059677553562a8f38ff07f3b9f61727bd614f505658b0a5ecbcf8df89be",
+  "size": 24062,
+  "subdir": "noarch",
+  "timestamp": 1615232388,
+  "url": "https://conda.anaconda.org/conda-forge/noarch/defusedxml-0.7.1-pyhd8ed1ab_0.tar.bz2",
+  "version": "0.7.1"
+}
