@@ -14,6 +14,7 @@ a directory:
                  (another predicate), none (attaches nothing), unindexed (dies
                  before writing the fallback tag), fail
   attach.skip    digests for which attach_sbom.sh attaches nothing
+  tag.lost       `crane tag` succeeds without writing the tag
   race.json      {tag: digest} written to the registry during the first
                  attach_sbom.sh call, as if someone else tagged meanwhile
   gh.json        {"repo": OWNER/NAME, "release": tag name, "published": bool, "draft": bool,
@@ -75,7 +76,8 @@ with open(path("log"), "a", encoding="utf-8") as log:
     log.write(json.dumps([tool] + args) + "\n")
 failing = text("fail").splitlines()
 if f"{tool} {args[0]}" in failing or " ".join([tool] + args[:2]) in failing:
-    stop(f"{tool}: simulated failure: connection reset by peer")
+    # Not a "not found": for gh an HTTP error other than 404.
+    stop("gh: Server Error (HTTP 502)" if tool == "gh" else f"{tool}: simulated failure: connection reset by peer")
 
 if tool == "crane":
     registry = load("registry.json", {"image": "", "tags": {}, "images": {}})
@@ -104,8 +106,9 @@ if tool == "crane":
         print(json.dumps(registry["images"][split(args[3])[0]]))
     elif args[0] == "tag":
         digest, _ = split(args[1])
-        registry["tags"][args[2]] = digest
-        save("registry.json", registry)
+        if not os.path.exists(path("tag.lost")):  # tag.lost: the registry answers but the tag is not written
+            registry["tags"][args[2]] = digest
+            save("registry.json", registry)
     else:
         sys.exit(64)
 
@@ -132,7 +135,15 @@ elif tool == "attach_sbom.sh":
             print("attach_sbom: the registry lists no referrer")
             sys.exit(3)
         shutil.copyfile(path("pushed", hexdigest), path("indexed", hexdigest))
-        sys.exit(0)
+        # Exit 3 too when none of the referrers is a CycloneDX attestation.
+        for line in text(os.path.join("pushed", hexdigest)).splitlines():
+            try:
+                statement = json.loads(base64.b64decode(json.loads(line)["payload"]))
+                if statement["predicateType"] == "https://cyclonedx.org/bom":
+                    sys.exit(0)
+            except (ValueError, KeyError, TypeError):
+                pass
+        sys.exit(3)
     mode = text("attach.mode", "ok").strip()
     if args[0].split("@", 1)[1] in text("attach.skip").split():
         mode = "none"
@@ -181,14 +192,15 @@ elif tool == "gh":
         elif args[1] == "view":
             if not exists:
                 stop("release not found")
-            print(json.dumps({"tagName": args[2], "isDraft": not gh.get("published")}))
+            fields = {"tagName": args[2], "isDraft": not gh.get("published")}
+            print(json.dumps({k: fields[k] for k in (option("--json") or "").split(",") if k in fields}))
         elif args[1] == "create":
             if exists:
                 stop("HTTP 422: Validation Failed: already_exists")
             if "--draft" in args:
                 gh["draft"] = True
-            else:
-                gh.update(published=True, git_tag=option("--target"))
+            else:  # an existing git tag is used as it is; --target only applies to a new one
+                gh.update(published=True, git_tag=gh.get("git_tag") or option("--target"))
             save("gh.json", gh)
         elif args[1] == "upload":
             if not exists:

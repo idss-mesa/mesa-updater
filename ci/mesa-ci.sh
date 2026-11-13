@@ -73,7 +73,10 @@ check_released() {
   local tags changed
   tags=$(git ls-remote --tags origin "refs/tags/v$version") || die "cannot list the tags of origin (is v$version released?)"
   if [ -z "$tags" ]; then echo "check: VERSION $version is not released yet"; return 0; fi
-  git fetch --quiet --depth 1 origin "refs/tags/v$version" || die "cannot fetch tag v$version from origin"
+  # One commit is enough in CI's shallow checkout; a full clone must stay full.
+  local depth=()
+  [ "$(git rev-parse --is-shallow-repository)" != true ] || depth=(--depth 1)
+  git fetch --quiet --no-tags "${depth[@]}" origin "refs/tags/v$version" || die "cannot fetch tag v$version from origin"
   changed=$(git diff --name-only FETCH_HEAD HEAD -- "$context" gpu sandbox ':!*.md') || die "cannot compare with tag v$version"
   if [ -n "$changed" ]; then
     echo "  ${changed//$'\n'/$'\n'  }" >&2
@@ -133,18 +136,38 @@ cmd_test() {
   esac
 }
 
-# Push the local image under a staging tag and record the digest the registry
-# gave it. Staging tags are not what anyone pulls: a release or rolling
-# workflow tags the digest once every variant has passed.
+# Push the local image under a staging tag and record its digest. Staging tags
+# are not what anyone pulls: a release or rolling workflow tags the digest
+# once every variant has passed.
+#
+# The tag is never read back: anyone with push access could have moved it. The
+# digest is the one docker reports for this push, and it is recorded only if
+# the manifest stored under that digest is this very image: its config is the
+# local image (the image ID is the config digest; with the containerd image
+# store it is the manifest digest itself).
 cmd_push() {
-  local stage digest kind
+  local stage log digest id manifest bound
   stage="$image:stage-${STAGE_ID:-$(git rev-parse --short=12 HEAD)}-$variant-$arch"
+  id=$(docker image inspect -f '{{.Id}}' "$(local_tag "$variant")")
   docker tag "$(local_tag "$variant")" "$stage"
-  docker push --quiet "$stage"
-  digest=$(crane digest "$stage")
-  [[ $digest =~ ^sha256:[0-9a-f]{64}$ ]] || die "crane digest $stage printed '$digest'"
-  kind=$(crane manifest "$stage" | python -c 'import json, sys; print("index" if "manifests" in json.load(sys.stdin) else "image")')
-  [ "$kind" = image ] || die "$stage is an image index, not a single image: the build must push one manifest"
+  log=$(docker push "$stage")
+  digest=$(sed -n 's/.*digest: \(sha256:[0-9a-f]\{64\}\).*/\1/p' <<<"$log" | tail -n 1)
+  [[ $digest =~ ^sha256:[0-9a-f]{64}$ ]] || die "docker push $stage did not report a digest"
+  manifest=$(crane manifest "$image@$digest")
+  bound=$(python -c '
+import json, sys
+manifest, digest, image_id = json.loads(sys.argv[1]), sys.argv[2], sys.argv[3]
+if "manifests" in manifest:
+    print("index")
+elif image_id in (digest, manifest.get("config", {}).get("digest")):
+    print("yes")
+else:
+    print("no")' "$manifest" "$digest" "$id")
+  case $bound in
+    yes) ;;
+    index) die "$image@$digest is an image index, not a single image: the build must push one manifest" ;;
+    *) die "$image@$digest is not the image that was built and tested here ($id)" ;;
+  esac
   mkdir -p "$out/$variant-$arch"
   echo "$digest" > "$out/$variant-$arch/digest"
   echo "push: $stage $digest"
@@ -194,5 +217,5 @@ case ${1:-} in
   test) cmd_test ;;
   push) cmd_push ;;
   sbom) cmd_sbom ;;
-  *) sed -n '2,28p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2; exit 2 ;;
+  *) sed -n '2,27p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2; exit 2 ;;
 esac

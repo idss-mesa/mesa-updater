@@ -6,8 +6,9 @@
 #   attach_sbom.sh --index-only <repo>@sha256:<64 hex>
 #
 # --index-only signs nothing: it rewrites the fallback tag from the referrers
-# the registry already has (exit 3 when there are none). It repairs a run that
-# died between the attestation and the tag.
+# the registry already has. It repairs a run that died between the
+# attestation and the tag. Exit 3 when no CycloneDX attestation is among the
+# referrers (other referrers, if any, are still listed in the tag).
 set -euo pipefail
 
 die() { echo "attach_sbom: $1" >&2; exit "${2:-1}"; }
@@ -109,6 +110,19 @@ if [[ -n $index_only ]]; then
     exit 3
   fi
   push_index "$tmp/preflight.json" "$tmp/before"
+  # Is one of them a cosign attestation of a CycloneDX SBOM?
+  python3 -c '
+import json, sys
+for desc in json.load(open(sys.argv[1]))["manifests"]:
+    if (desc.get("artifactType") == "application/vnd.dev.sigstore.bundle.v0.3+json"
+            and (desc.get("annotations") or {}).get("dev.sigstore.bundle.predicateType") == "https://cyclonedx.org/bom"):
+        sys.exit(0)
+sys.exit(3)' "$tmp/preflight.json" || {
+    code=$?
+    [[ $code -eq 3 ]] || die "cannot read the index built for $ref"
+    echo "attach_sbom: none of the referrers of $ref is a CycloneDX attestation"
+    exit 3
+  }
   exit 0
 fi
 

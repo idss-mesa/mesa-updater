@@ -360,6 +360,21 @@ class AttachSbomTest(unittest.TestCase):
         self.assertEqual(self.calls()[-1][:5], ["oras", "manifest", "push", "--media-type", INDEX_TYPE])
         self.assertIn("lists 2 referrer(s)", result.stdout)
 
+    def test_index_only_keeps_what_only_the_existing_tag_lists(self):
+        self.registry(before=[ATTESTATION], after=[], oras_before=[SIGNATURE])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.pushed()["manifests"], [CORRECT[ATTESTATION], CORRECT[SIGNATURE]])
+
+    def test_index_only_without_a_cyclonedx_attestation(self):
+        # A signature and an SBOM attached with oras: listed in the tag, but nothing cosign could verify as ours.
+        self.registry(before=[ORAS_SBOM, SIGNATURE], after=[])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 3, result.stderr)
+        self.assertIn("is a CycloneDX attestation", result.stdout)
+        self.assertEqual(self.pushed()["manifests"], [CORRECT[ORAS_SBOM], CORRECT[SIGNATURE]])
+        self.assertNotIn("cosign", [c[0] for c in self.calls()])
+
     def test_index_only_with_nothing_attached(self):
         self.registry(before=[], after=[ATTESTATION])
         result = self.run_script("--index-only", REF)

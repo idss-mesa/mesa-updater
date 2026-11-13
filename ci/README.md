@@ -32,8 +32,13 @@ fails on unexplained scanner components. `sbom` needs `syft` and `crane`
 
 `push` needs a registry login and `crane`. It writes a **staging tag**, which
 nobody pulls: the tags users see are written by `release.py publish` once
-every variant has passed. It refuses to record an image index (the build
-pushes one image manifest, without a provenance attestation). `sbom` records
+every variant has passed. The tag is never read back (anyone with push access
+could have moved it): the digest is the one `docker push` reports, and it is
+recorded only when the manifest stored under that digest is the image that
+was built and tested here (its config digest, or with the containerd image
+store the manifest digest itself, is the local image ID). An image index is
+refused (the build pushes one image manifest, without a provenance
+attestation). `sbom` records
 the pushed digest when `push` ran before it, else the local image ID. `build`
 with a `BASE_REF` of the form `<image>@sha256:...` records that digest in
 `out/<variant>-<arch>/base`; a release checks it.
@@ -106,7 +111,23 @@ published. Cancelling a run stops the release if `publish` has not started.
   image repo's environment `gpu-dispatch`, which only runs on `main` can use.
 
 These rest on `main` itself being protected (pull requests only) in the image
-repos and in this repo, and on the registry refusing to move `v*` tags.
+repos and in this repo.
+
+**What a tag alone does not prove.** The registry credentials are secrets any
+workflow run in an image repo can use, on any branch. Whoever can push a
+branch there can therefore write tags in `vice/mesa-<app>` directly: move a
+rolling tag, or create a `vX.Y.Z` tag before the release does. The registry's
+immutability rule for `v*` stops an existing release tag from being moved,
+not a new one from being created. So:
+
+- an image is a release only together with its attestation; the command in
+  the release notes checks it, and no branch run can produce one that passes;
+- a `vX.Y.Z` tag created by hand makes `guard` refuse that version ("partly
+  published"). A registry project admin removes the tag, or the next patch
+  version is released instead;
+- moving the registry credentials into an environment limited to `main`
+  (with a separate registry project for test runs from branches) closes
+  this; it is not done yet.
 
 A **test run** passes a tag prefix `ci-test-<word>-`. It writes
 `ci-test-<word>-vX.Y.Z*` tags and a draft GitHub release and creates no git
@@ -114,7 +135,24 @@ tag. From a branch other than `main` it must leave the GPU variants out.
 
 GPU builds of all image repos share one runner that takes one job at a time.
 The gpu job waits up to 200 minutes, queueing included; when that runs out,
-"Re-run failed jobs" asks again.
+"Re-run failed jobs" asks again. When the gpu job fails or is cancelled it
+cancels the builder run it started. If it died before learning which run that
+was, stop it by hand:
+`gh run cancel <id> --repo idss-mesa/mesa-gpu-builder`.
+
+**Known gaps.**
+
+- Between the merge of a new `VERSION` and the appearance of its git tag (the
+  length of a release, longer if it fails), a pull request that changes image
+  files without raising `VERSION` passes the check. Once the tag exists,
+  every pull request fails with "these image files differ from the released
+  vX.Y.Z" until `VERSION` is raised. A check after each merge to `main` is
+  planned with the rolling workflow.
+- Keyless verification relies on the time the transparency log recorded for
+  the signature. If verification starts failing after a change of Sigstore's
+  default signing configuration, look at cosign's `--use-signed-timestamps`
+  first.
+- "Re-run all jobs" cannot finish a partly published release (see above).
 
 ### `release.py`
 
@@ -177,8 +215,9 @@ Then, in this order:
    - Some verify but none carries this SBOM: `attach_sbom.sh` signs this one.
    - Nothing verifies: `attach_sbom.sh --index-only` first (an earlier
      attempt may have attested and died before writing the tag cosign finds
-     it by). If referrers exist and still nothing verifies, `publish` stops
-     rather than sign again. If nothing is attached, `attach_sbom.sh` signs.
+     it by). If a CycloneDX attestation is among the referrers and still
+     nothing verifies, `publish` stops rather than sign again. If none is
+     attached (exit 3), `attach_sbom.sh` signs.
    After signing, the image is verified again; failing that stops everything.
 2. **Tags**, only when every image verified: each tag is read again and
    written with `crane tag` if absent; a tag that meanwhile points elsewhere
@@ -481,8 +520,10 @@ predicate. `release.py publish` therefore verifies first and only calls this
 when no attestation of the SBOM can be found.
 
 `--index-only` signs nothing: it rewrites the fallback tag from the referrers
-the registry lists, and exits 3 when there are none. It repairs a run that
-died between `cosign attest` and the tag.
+the registry lists (and those an existing tag lists). It repairs a run that
+died between `cosign attest` and the tag. Exit 0 when a cosign attestation
+of a CycloneDX SBOM is among them, 3 when none is (including when there are
+no referrers at all).
 
 ### `install-tools.sh` and `tools.lock`
 

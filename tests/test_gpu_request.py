@@ -34,7 +34,9 @@ case "$1 $2" in
     ;;
   "run list")
     builder "$@"
-    [[ $(opt --workflow "$@") == build.yml ]] || exit 64
+    [[ $(opt --workflow "$@") == build.yml && $(opt --event "$@") == workflow_dispatch ]] || exit 64
+    [[ $(opt --json "$@") == databaseId,displayTitle ]] || exit 64
+    (($(opt --limit "$@") >= 20)) || exit 64   # other repos' builds are in the same list
     n=$(cat "$STUB_STATE/list.errors" 2>/dev/null || echo 0)
     if ((n > 0)); then echo $((n - 1)) >"$STUB_STATE/list.errors"; echo "HTTP 502" >&2; exit 1; fi
     cat "$STUB_STATE/runs.json"
@@ -92,7 +94,8 @@ class GpuRequestTest(unittest.TestCase):
     def run_script(self, *args, **extra):
         env = {k: v for k, v in os.environ.items() if not k.startswith(("GITHUB_", "MESA_", "STAGE_", "GH_", "GPU_"))}
         env.update(PATH=f"{self.bin}:{env['PATH']}", STUB_STATE=str(self.state), GPU_REQUEST_POLL_SECONDS="0",
-                   GITHUB_REPOSITORY="idss-mesa/cli", GITHUB_SHA=SHA,
+                   GITHUB_REPOSITORY="idss-mesa/cli", GITHUB_SHA=SHA, GITHUB_REF_NAME="feature",
+                   GITHUB_REF="refs/heads/feature",
                    GITHUB_RUN_ID="43485738320", GITHUB_RUN_ATTEMPT="2", STAGE_ID="43485738320",
                    GITHUB_OUTPUT=str(self.output))
         env.update(extra)
@@ -126,9 +129,10 @@ class GpuRequestTest(unittest.TestCase):
             with self.subTest(answer=answer):
                 if answer is not None:
                     (self.state / "dispatch.json").write_text(answer)
-                self.runs([{"databaseId": 7, "displayTitle": "cli 43485738320-1"},
-                           {"databaseId": 9, "displayTitle": "cli 43485738320-2"},
-                           {"databaseId": 8, "displayTitle": "kasm 43485738320-2"}])
+                self.runs([{"databaseId": 8, "displayTitle": "kasm 43485738320-2"},
+                           {"databaseId": 7, "displayTitle": "cli 43485738320-1"},
+                           {"databaseId": 6, "displayTitle": "cli 43485738320-22"},
+                           {"databaseId": 9, "displayTitle": "cli 43485738320-2"}])
                 result = self.run_script("start", DIGEST)
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual(result.stdout, "9\n")

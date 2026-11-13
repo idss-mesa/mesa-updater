@@ -313,6 +313,26 @@ jobs:
           echo "the GPU build did not finish within 200 minutes" >&2
           exit 1
 
+      # A build nobody waits for would keep the one runner busy for hours.
+      - name: Builder token (to stop a build nobody waits for)
+        id: token5
+        if: (cancelled() || failure()) && steps.ask.outputs.run != ''
+        continue-on-error: true
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.MESA_GPU_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.MESA_GPU_DISPATCH_PRIVATE_KEY }}
+          owner: idss-mesa
+          repositories: mesa-gpu-builder
+          permission-actions: write
+
+      - name: Stop the builder when this job was cancelled or failed
+        if: (cancelled() || failure()) && steps.ask.outputs.run != ''
+        env:
+          GH_TOKEN: ${{ steps.token5.outputs.token }}
+          RUN: ${{ steps.ask.outputs.run }}
+        run: ci/gpu_request.sh cancel "$RUN" || true
+
       - name: Upload digests, SBOMs and reports
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

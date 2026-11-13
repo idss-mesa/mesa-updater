@@ -284,8 +284,10 @@ class GuardTest(ReleaseTest):
         self.assertEqual(self.calls("gh"), [], "a test run does not look at GitHub releases")
 
     def test_gpu_builds_only_from_main(self):
-        self.assertFails(self.guard("--tag-prefix", PREFIX, ref="refs/heads/feature"),
-                         "the GPU builder only builds commits on main")
+        for ref in ("refs/heads/feature", "refs/heads/main2", "refs/heads/main/x", "refs/tags/main", "main"):
+            with self.subTest(ref=ref):
+                self.assertFails(self.guard("--tag-prefix", PREFIX, ref=ref),
+                                 "the GPU builder only builds commits on main")
         self.assertEqual(self.calls(), [])
         result = self.guard("--tag-prefix", PREFIX)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -452,8 +454,9 @@ class PublishTest(ReleaseTest):
                          "real release")
         for ref in ("refs/heads/feature", "refs/heads/main2", "refs/tags/main"):
             self.assertFails(self.publish(ref=ref), "only be released from refs/heads/main")
-        self.assertFails(self.publish("--tag-prefix", PREFIX, ref="refs/heads/feature"),
-                         "the GPU builder only builds commits on main")
+        for ref in ("refs/heads/feature", "refs/heads/main2"):
+            self.assertFails(self.publish("--tag-prefix", PREFIX, ref=ref),
+                             "the GPU builder only builds commits on main")
         self.assertEqual(self.writes(), [])
         self.assertEqual(self.registry["tags"], {})
 
@@ -490,6 +493,23 @@ class PublishTest(ReleaseTest):
         self.assertFails(self.publish(), "it must be on " + REVISION)
         self.gh.update(published=True, git_tag=None)
         self.assertFails(self.publish(), "the git tag v2.0.0 is missing")
+
+    def test_fails_when_the_git_tag_was_already_on_another_commit(self):
+        """`gh release create` uses an existing tag as it is."""
+        for state in ({}, {"draft": True}):
+            with self.subTest(state=state):
+                self.gh = {"repo": REPO, "release": "v2.0.0", "git_tag": "0" * 40, **state}
+                self.assertFails(self.publish(), "it must be on " + REVISION)
+
+    def test_a_github_error_is_not_a_missing_release(self):
+        (self.state / "fail").write_text("gh release view\n")
+        self.assertFails(self.publish(), "gh release view")
+        self.assertEqual(self.calls("gh", ["release", "create"]), [])
+
+    def test_asks_whether_the_release_is_a_draft(self):
+        self.assertEqual(self.publish().returncode, 0)
+        view = self.calls("gh", ["release", "view"])[0]
+        self.assertEqual(view[3:], ["v2.0.0", "--repo", REPO, "--json", "tagName,isDraft"])
 
     # ---- everything below must stop before anything is attested, tagged or released ----
 
@@ -678,6 +698,39 @@ class PublishTest(ReleaseTest):
         self.assertEqual(self.calls("attach_sbom.sh")[0][1:], ["--index-only", f"{IMAGE}@{digest_of('cpu', 'amd64')}"])
         self.assertEqual(len(self.signings()), 4, "the CPU image is found again, not signed again")
         self.assertIn("found after rewriting its index", result.stdout)
+        # The look after the repair is the same full verification as every other.
+        cpu = [r[1:] for r in self.calls("cosign") if r[-1].endswith(digest_of("cpu", "amd64"))]
+        self.assertEqual(cpu, [verify_argv("cpu", "amd64")] * 2)
+
+    def unindexed(self, *lines):
+        """Leave referrers of the CPU image in the registry that the fallback tag does not list."""
+        (self.state / "pushed").mkdir(exist_ok=True)
+        (self.state / "pushed" / digest_of("cpu", "amd64").split(":")[1]).write_text("".join(lines))
+
+    def envelope(self, predicate, predicate_type="https://cyclonedx.org/bom"):
+        statement = {"predicateType": predicate_type, "predicate": predicate,
+                     "subject": [{"name": IMAGE, "digest": {"sha256": digest_of("cpu", "amd64").split(":")[1]}}]}
+        return json.dumps({"payload": base64.b64encode(json.dumps(statement).encode()).decode()}) + "\n"
+
+    def test_repaired_index_with_only_another_sbom_is_signed(self):
+        self.unindexed(self.envelope({"bomFormat": "CycloneDX", "components": []}))
+        result = self.publish()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(self.signings()), 5, "verified, but not this SBOM: this one is attested too")
+
+    def test_repaired_index_is_read_past_a_line_that_is_no_envelope(self):
+        sbom = json.loads((self.out / "cpu-amd64" / "image.cdx.json").read_text())
+        self.unindexed("not json\n", "{}\n", self.envelope(sbom))
+        result = self.publish()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(self.signings()), 4)
+
+    def test_a_referrer_that_is_no_attestation_does_not_block_signing(self):
+        """A signature, or an SBOM some other tool attached: --index-only says 3, nothing of ours is there."""
+        self.unindexed(self.envelope({"critical": {}}, "https://sigstore.dev/cosign/sign/v1"))
+        result = self.publish()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(self.signings()), 5)
 
     def test_does_not_sign_again_when_what_is_attached_does_not_verify(self):
         self.attach("cpu", "amd64")
@@ -699,6 +752,11 @@ class PublishTest(ReleaseTest):
         (self.state / "fail").write_text("crane tag\n")
         self.assertFails(self.publish(), "crane tag")
         self.assertEqual([r for r in self.calls("gh", ["release"]) if r[2] != "view"], [])
+
+    def test_tag_that_did_not_stick(self):
+        (self.state / "tag.lost").touch()
+        self.assertFails(self.publish(), "does not point at")
+        self.assertEqual(self.calls("gh"), [])
 
     def test_tag_written_by_someone_else_meanwhile(self):
         foreign = "sha256:" + "f" * 64
