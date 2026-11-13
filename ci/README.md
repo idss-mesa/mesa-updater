@@ -2,13 +2,45 @@
 
 The files in this directory are the canonical copy. Each image repo
 (`idss-mesa/{cli,jupyterlab,kasm,rstudio,vscode}`) carries a byte-identical
-copy in its own `ci/`, checked against `ci/SHARED.sha256`. Workflows only call
-`make` targets that run these scripts, so every step also works by hand.
+copy in its own `ci/`, checked against `ci/SHARED.sha256` (`../sync.sh` writes
+the manifest and copies the files). Workflows only call `ci/mesa-ci.sh`, so
+every step also works by hand.
 
 All Python here is **stdlib only, Python >= 3.10**, one file per tool, each
 runnable as `python3 ci/<tool>.py --help`. Shell is bash with
 `set -euo pipefail`, shellcheck clean. No tool reads credentials; registry
 access goes through the Docker config that `docker login` wrote.
+
+## `mesa-ci.sh` — what the workflows run
+
+Run from an image repo's root:
+
+```
+ci/mesa-ci.sh check                  # shared files unchanged, VERSION is X.Y.Z, every lock and pin parses
+VARIANT=cpu ci/mesa-ci.sh build      # local image mesa-local/<name>:<variant>-<arch>
+VARIANT=cpu ci/mesa-ci.sh test       # ci/test-cpu.sh, gpu/test-gpu.sh or sandbox/test-sandbox.sh
+VARIANT=cpu ci/mesa-ci.sh sbom       # syft scan, lock SBOM, probe, cross-check, merged SBOM in out/<variant>-<arch>/
+```
+
+`VARIANT` is `cpu` (default), `sandbox`, `gpu` or `gpu-sandbox`; a variant
+builds FROM the local image of the one below it unless `BASE_REF` names
+another. `ARCH` defaults to the machine's. `sbom` exits non-zero when the
+cross-check fails and still writes the merged SBOM; `STRICT_REVERSE=1` also
+fails on unexplained scanner components. `sbom` needs `syft` and `crane`
+(`ci/install-tools.sh syft crane`).
+
+Each image repo keeps, next to its copy of `ci/`:
+
+| File | Content |
+|---|---|
+| `VERSION` | `X.Y.Z`, the next (or current) release |
+| `mesa.env` | `MESA_IMAGE` (registry path without tag), `MESA_CONTEXT` (CPU build context directory), `MESA_ARCHES` (e.g. `"amd64 arm64"`), `MESA_SANDBOX_PORT`, `MESA_SANDBOX_PATH`, `MESA_SANDBOX_DOCKER_ARGS` (for `sandbox/test-sandbox.sh`) |
+| `ci/test-cpu.sh IMAGE` | the repo's own smoke test of the CPU image |
+| `ci/pins.tsv`, `sbom/locks.tsv`, `sbom/allow.tsv` | described below |
+
+The reusable workflow `.github/workflows/mesa-pr.yml` in this repo runs
+`check`, then `build`, `test` and `sbom` for the CPU image on each
+architecture and for the sandbox image on amd64, with no secrets.
 
 ## Terms
 

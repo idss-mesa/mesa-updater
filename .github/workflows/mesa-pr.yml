@@ -1,0 +1,96 @@
+name: mesa-pr
+
+# Reusable pull-request check for a MESA image repo. Called as
+#
+#   jobs:
+#     pr:
+#       uses: idss-mesa/mesa-updater/.github/workflows/mesa-pr.yml@<commit sha>
+#
+# It checks out the calling repo and runs that repo's own ci/mesa-ci.sh, so
+# the same steps run by hand. No secrets, nothing is pushed: it is safe for
+# pull requests from forks. GPU variants are not built here (no GPU runner is
+# reachable from pull requests, by design).
+on:
+  workflow_call:
+    inputs:
+      arches:
+        description: JSON list of architectures to build the CPU image for
+        type: string
+        default: '["amd64", "arm64"]'
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Static checks
+        run: ci/mesa-ci.sh check
+
+  build:
+    runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ${{ fromJSON(inputs.arches) }}
+    env:
+      ARCH: ${{ matrix.arch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The image, its sandbox variant and the scanner's working copy need
+      # about 25 GB; the preinstalled SDKs are not used here.
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+
+      - name: Install pinned tools
+        run: ci/install-tools.sh syft crane
+
+      - name: Build the CPU image
+        run: VARIANT=cpu ci/mesa-ci.sh build
+
+      - name: Test the CPU image
+        run: VARIANT=cpu ci/mesa-ci.sh test
+
+      - name: SBOM and cross-check (CPU)
+        run: VARIANT=cpu ci/mesa-ci.sh sbom
+
+      - name: Build the sandbox image
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh build
+
+      - name: Test the sandbox image
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh test
+
+      - name: SBOM and cross-check (sandbox)
+        if: matrix.arch == 'amd64'
+        run: VARIANT=sandbox ci/mesa-ci.sh sbom
+
+      - name: Upload SBOMs and reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sbom-${{ matrix.arch }}
+          path: |
+            out/*/image.cdx.json
+            out/*/report.json
+            out/*/crosscheck.txt
+          if-no-files-found: ignore
+          retention-days: 14
