@@ -1,0 +1,91 @@
+{
+  "arch": "x86_64",
+  "build": "py313hd5f5364_1",
+  "build_number": 1,
+  "build_string": "py313hd5f5364_1",
+  "channel": "conda-forge",
+  "constrains": [
+    "ca-certificates >=2026.10.19",
+    "certifi >=2026.10.19",
+    "conda-build >=25.9",
+    "conda-content-trust >=0.3.0",
+    "conda-env >=2.6"
+  ],
+  "depends": [
+    "archspec >=0.2.3",
+    "backports.zstd >=1.3.0",
+    "boltons >=23.0.0",
+    "charset-normalizer",
+    "conda-package-handling >=2.2.0",
+    "distro >=1.5.0",
+    "frozendict >=2.4.2",
+    "menuinst >=2",
+    "msgpack-python >=1.1.1",
+    "packaging >=26.3",
+    "platformdirs >=3.10.0",
+    "pluggy >=1.6.0",
+    "pycosat >=0.6.3",
+    "python",
+    "requests >=2.28.0,<3",
+    "ruamel.yaml >=0.11.14,<0.20",
+    "setuptools >=60.0.0",
+    "tqdm >=4",
+    "truststore >=0.8.0",
+    "conda-libmamba-solver >=26.7.0",
+    "conda-lockfiles >=0.2.2",
+    "conda-pycosat-solver >=26.10.0",
+    "conda-pypi >=0.13.0",
+    "conda-rattler-solver >=26.10.2",
+    "conda-self >=0.3.0",
+    "python_abi 3.13.* *_cp313"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/conda-26.10.0-py313hd5f5364_1",
+  "files": [
+    "bin/activate",
+    "bin/conda",
+    "bin/deactivate"
+  ],
+  "fn": "conda-26.10.0-py313hd5f5364_1.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/conda-26.10.0-py313hd5f5364_1",
+    "type": 1
+  },
+  "md5": "ec7a81ffe51f1a684eac0b2128cd8263",
+  "name": "conda",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/conda-26.10.0-py313hd5f5364_1.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/activate",
+        "path_type": "hardlink",
+        "sha256": "998f7dbc3f5e3fae536fa282be1c5e91c580d6cc92f89d2d9456e339b4e10acc",
+        "sha256_in_prefix": "602794863eef698cbb0e58d40816680592dd759e0fd35b2ad34d640acde45169",
+        "size_in_bytes": 429
+      },
+      {
+        "_path": "bin/conda",
+        "path_type": "hardlink",
+        "sha256": "eea283dddb6fcfde4409edecd1e8b5320357357053efc2d8f1007d637e20a296",
+        "sha256_in_prefix": "1d559ad08eb9df56210cc9e425ed03e94627c735b7dd6fec923f4fcacc2ee488",
+        "size_in_bytes": 756
+      },
+      {
+        "_path": "bin/deactivate",
+        "path_type": "hardlink",
+        "sha256": "750fecffc951b82755eccc1f358df5ad264cc82f4ec56f7ed57a89735dd12cf6",
+        "sha256_in_prefix": "1976e5eb3d37aa3f978cbbdf74a4f2e6ee0c25713ec347aa27f2f6dc53a0313b",
+        "size_in_bytes": 517
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "conda",
+  "sha256": "65ce9f609f8ae4421ca86eef3e3ebc349a30ead1601a9c413d3ae3670c5d63cd",
+  "size": 1489630,
+  "subdir": "linux-64",
+  "timestamp": 1794320775,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/conda-26.10.0-py313hd5f5364_1.conda",
+  "version": "26.10.0"
+}

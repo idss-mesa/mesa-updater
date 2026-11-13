@@ -1,0 +1,10 @@
+# Pinned downloads of the fixture Dockerfiles (columns: ci/README.md, 'ci/pins.tsv').
+# name	layer	dockerfile	version_arg	hash_args	purl	url	path	probe	source
+tini	cpu	bash/Dockerfile	TINI_VERSION	amd64=TINI_SHA256_AMD64,arm64=TINI_SHA256_ARM64	pkg:github/krallin/tini@v{version}	https://github.com/krallin/tini/releases/download/v{version}/tini-{arch}	/usr/bin/tini	tini --version	github-release:krallin/tini
+go	cpu	bash/Dockerfile	GO_VERSION	amd64=GO_SHA256_AMD64,arm64=GO_SHA256_ARM64	pkg:generic/go@{version}	https://go.dev/dl/go{version}.linux-{arch}.tar.gz	/usr/local/go	/usr/local/go/bin/go version	url:https://go.dev/dl/?mode=json
+ttyd	cpu	bash/Dockerfile	TTYD_VERSION	amd64=TTYD_SHA256_X86_64,arm64=TTYD_SHA256_AARCH64	pkg:github/tsl0922/ttyd@{version}	https://github.com/tsl0922/ttyd/releases/download/{version}/ttyd.{ttyd_arch}	/usr/local/bin/ttyd	ttyd --version	github-release:tsl0922/ttyd
+gocmd	cpu	bash/Dockerfile	GOCMD_VERSION	amd64=GOCMD_SHA256_AMD64,arm64=GOCMD_SHA256_ARM64	pkg:generic/gocmd@{version}	https://github.com/cyverse/gocommands/releases/download/v{version}/gocmd-v{version}-linux-{arch}.tar.gz	/usr/local/bin/gocmd	gocmd --version	github-release:cyverse/gocommands
+node	cpu	bash/Dockerfile	NODE_VERSION	-	pkg:generic/node@{version}	https://nodejs.org/dist/v{version}/node-v{version}-linux-{node_arch}.tar.xz	/usr/local/bin/node	node --version	url:https://nodejs.org/dist/index.json
+claude-code	cpu	bash/Dockerfile	CLAUDE_CODE_VERSION	-	pkg:npm/%40anthropic-ai/claude-code@{version}	-	/home/jovyan/.npm-global/lib/node_modules/@anthropic-ai/claude-code	-	npm-lock:sbom/npm/package-lock.json:@anthropic-ai/claude-code
+goose	cpu	bash/Dockerfile	GOOSE_VERSION	-	pkg:github/block/goose@v{version}	-	-	-	github-release:block/goose
+ollama	gpu	gpu/Dockerfile	OLLAMA_VERSION	amd64=OLLAMA_SHA256	pkg:github/ollama/ollama@v{version}	https://github.com/ollama/ollama/releases/download/v{version}/ollama-linux-amd64.tar.zst	/usr/local/lib/ollama	ollama.bin --version	github-release:ollama/ollama

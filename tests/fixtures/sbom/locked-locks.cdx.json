@@ -1,0 +1,524 @@
+{
+ "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "version": 1,
+ "components": [
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/interface_meta@1.3.0?build=pyhd8ed1ab_1&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "name": "interface_meta",
+   "version": "1.3.0",
+   "purl": "pkg:conda/interface_meta@1.3.0?build=pyhd8ed1ab_1&channel=conda-forge&subdir=noarch&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "cdd4377e9565f383e3e69f26b43fc1abc892fda591fa724af508e498c2dc0859"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/interface_meta-1.3.0-pyhd8ed1ab_1.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "name": "openssl",
+   "version": "3.6.5",
+   "purl": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/packaging@26.3?build=pyhc364b38_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "name": "packaging",
+   "version": "26.3",
+   "purl": "pkg:conda/packaging@26.3?build=pyhc364b38_0&channel=conda-forge&subdir=noarch&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c432626b16768b8dab228bfb706f7060c2d462a21c516d240f68f2f902b5a044"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/packaging-26.3-pyhc364b38_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/pdal@2.9.2?build=he64977a_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "name": "pdal",
+   "version": "2.9.2",
+   "purl": "pkg:conda/pdal@2.9.2?build=he64977a_0&channel=conda-forge&subdir=noarch&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "5220d6be2e15eb7c8ba117df78e1603f83209d350b2068e7cef7b1cafedb6fb9"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/pdal-2.9.2-he64977a_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/python-dateutil@2.9.0.post0?build=pyhe01879c_2&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "name": "python-dateutil",
+   "version": "2.9.0.post0",
+   "purl": "pkg:conda/python-dateutil@2.9.0.post0?build=pyhe01879c_2&channel=conda-forge&subdir=noarch&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "d6a17ece93bbd5139e02d2bd7dbfa80bee1a4261dced63f65f679121686bf664"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/python-pdal@3.5.3?build=np2py310hb764e7b_2&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "name": "python-pdal",
+   "version": "3.5.3",
+   "purl": "pkg:conda/python-pdal@3.5.3?build=np2py310hb764e7b_2&channel=conda-forge&subdir=linux-64&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "86c2120f666cdbe8b998728ab6d47431d5df7391ae2f73c639ec6da30d014425"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/python-pdal-3.5.3-np2py310hb764e7b_2.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/python@3.10.22?build=h267e890_0_cpython&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "name": "python",
+   "version": "3.10.22",
+   "purl": "pkg:conda/python@3.10.22?build=h267e890_0_cpython&channel=conda-forge&subdir=linux-64&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "819fa140a71ab005c448bf164eb182f91610b50f0bffca5b0b94cb6773c5e2f4"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.10.22-h267e890_0_cpython.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:conda/urllib3@2.5.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "name": "urllib3",
+   "version": "2.5.0",
+   "purl": "pkg:conda/urllib3@2.5.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "4fb9789154bd666ca74e428d973df81087a697dbb987775bc3198d2215f240f8"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/urllib3-2.5.0-pyhd8ed1ab_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "conda"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial.amd64.lock"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:npm/%40fastify/deepmerge@3.2.4#/home/jovyan/.npm-global/lib",
+   "name": "@fastify/deepmerge",
+   "version": "3.2.4",
+   "purl": "pkg:npm/%40fastify/deepmerge@3.2.4",
+   "hashes": [
+    {
+     "alg": "SHA-512",
+     "content": "91cf0642ae605fd451870d2ba2fdc332b37cc12f32465c4945d0f3b18c3074157fc1acee56073fd4aec228bf74b65beedd19476a7e98d11d1a1379c9b41cf679"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://registry.npmjs.org/@fastify/deepmerge/-/deepmerge-3.2.4.tgz"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "npm"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/npm/package-lock.json"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/home/jovyan/.npm-global/lib"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:npm/ajv@8.20.0#/home/jovyan/.npm-global/lib",
+   "name": "ajv",
+   "version": "8.20.0",
+   "purl": "pkg:npm/ajv@8.20.0",
+   "hashes": [
+    {
+     "alg": "SHA-512",
+     "content": "4e16e58be3a53a3fa230f60505505f2773a60809da4b2367e0cd6fcfd4fa1a46b926df5b6bf1c8479ea3a32eb9b58ea4c7f142179557341f35f58eff194ac118"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://registry.npmjs.org/ajv/-/ajv-8.20.0.tgz"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "npm"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/npm/package-lock.json"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/home/jovyan/.npm-global/lib"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:npm/fast-uri@3.1.9#/home/jovyan/.npm-global/lib",
+   "name": "fast-uri",
+   "version": "3.1.9",
+   "purl": "pkg:npm/fast-uri@3.1.9",
+   "hashes": [
+    {
+     "alg": "SHA-512",
+     "content": "852ff45addd86b4e37a0a5ecd2c231acca4a4084d784c2c8ad500a2978b8828cc60bdbfb6115959d7219ce334f4ced3633d05dc4b096a8ad7245780dce257225"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.9.tgz"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "npm"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/npm/package-lock.json"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/home/jovyan/.npm-global/lib"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:npm/github-from-package@0.0.0#/home/jovyan/.npm-global/lib",
+   "name": "github-from-package",
+   "version": "0.0.0",
+   "purl": "pkg:npm/github-from-package@0.0.0",
+   "hashes": [
+    {
+     "alg": "SHA-512",
+     "content": "4b21f2dd3d6fd8d5179f6f4eb1677198ae91c070febe48f7bfc7a7f00381675c0143f842010e5b0104c3d36916e16f6d529ff7421e89f2bf44be7b62c8298e3b"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "npm"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/npm/package-lock.json"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/home/jovyan/.npm-global/lib"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:npm/pino@10.4.0#/home/jovyan/.npm-global/lib",
+   "name": "pino",
+   "version": "10.4.0",
+   "purl": "pkg:npm/pino@10.4.0",
+   "hashes": [
+    {
+     "alg": "SHA-512",
+     "content": "6e4d59313c06fd5ca6c7eccfa1adbc321373b9c16f5c95a9ddcb2b4aec6e1cf48c7947adb5a0a843926f834ee6b42e0918da5c7d3c33e35a150a736004af7ebc"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://registry.npmjs.org/pino/-/pino-10.4.0.tgz"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "npm"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/npm/package-lock.json"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/home/jovyan/.npm-global/lib"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:pypi/urllib3@2.8.0#/opt/conda/envs/geospatial",
+   "name": "urllib3",
+   "version": "2.8.0",
+   "purl": "pkg:pypi/urllib3@2.8.0",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
+    },
+    {
+     "alg": "SHA-256",
+     "content": "63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pip"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "bash/locks/geospatial-pip.amd64.txt"
+    },
+    {
+     "name": "mesa:lock:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  }
+ ]
+}

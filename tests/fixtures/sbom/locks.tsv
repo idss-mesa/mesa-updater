@@ -1,0 +1,12 @@
+# Lock set of tests/test_sbom_merge.py and tests/test_sbom_crosscheck.py: the lock files of
+# tests/fixtures/locks plus pip/mesa-venv-drift.amd64.txt, with the prefixes of the real mesa-cli image
+# that image.cdx.json was cut from. The tests copy both trees into a temporary repo root.
+# kind	layer	arch	file	prefix
+base	cpu	*	bash/Dockerfile	-
+pins	cpu	*	ci/pins.tsv	-
+pip	cpu	amd64	sbom/pip/mesa-venv.amd64.txt	/opt/mesa
+pip	cpu	amd64	sbom/pip/mesa-venv-drift.amd64.txt	/opt/mesa
+pip	cpu	*	sbom/pip/conda-base.txt	/opt/conda
+npm	cpu	*	sbom/npm/package-lock.json	/home/jovyan/.npm-global/lib/node_modules
+conda	cpu	amd64	sbom/conda/geospatial.amd64.lock	/opt/conda/envs/geospatial
+vsix	cpu	*	sbom/vsix.tsv	/config/.local/share/code-server/extensions

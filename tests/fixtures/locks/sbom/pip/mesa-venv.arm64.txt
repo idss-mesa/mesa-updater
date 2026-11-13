@@ -1,0 +1,51 @@
+# Cut of the 'uv pip compile --generate-hashes' lock of /opt/mesa (aarch64).
+annotated-types==0.8.0 \
+    --hash=sha256:13b2beaad985e05e2d6407ee4c4f35590b11f8d693a258a561055cac8f64cab7 \
+    --hash=sha256:f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0
+    # via pydantic
+certifi==2026.10.23 \
+    --hash=sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd \
+    --hash=sha256:e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1
+    # via
+    #   httpcore
+    #   httpx
+    #   requests
+mesa-ducklake @ https://github.com/idss-mesa/mesa-ducklake/releases/download/v0.2.0/mesa_ducklake-0.2.0-py3-none-any.whl \
+    --hash=sha256:7d5ca86d820cbd18635075372f967a9496f9b671fb1189897bafd71647042788
+    # via
+    #   -r mesa-venv.in
+    #   mesa-mcp
+mesa-mcp @ https://github.com/idss-mesa/mesa-mcp/releases/download/v0.2.0/mesa_mcp-0.2.0-py3-none-any.whl \
+    --hash=sha256:63d5c4dfc0a91f8fd676f64dfc5ef75519b1f494a23b7d8e69eca35a3607a1ef
+    # via -r mesa-venv.in
+pyjwt==2.15.1 \
+    --hash=sha256:42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193 \
+    --hash=sha256:4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8
+    # via
+    #   mcp
+    #   mesa-mcp
+python-irodsclient==3.3.0 \
+    --hash=sha256:3016c36f26bd2d5edd64533f492b56a892432e9d3504ef6827eea1ec0acaeb0d \
+    --hash=sha256:dfab1ad8cc01bedef1b4e29e26a6f02b00ab4c64d520295e9ab35c4de26e2d32
+    # via
+    #   mesa-ducklake
+    #   mesa-mcp
+sse-starlette==3.7.0 \
+    --hash=sha256:326416da2ab52e9a41b3f409d3ff897eda45aa68c9f3b7b17d0913aab8d219c3 \
+    --hash=sha256:f1d3136caa12d129284fca3d2ded79bc9af943320b6472712955fea52a6d3eea
+    # via mcp
+typing-extensions==4.16.0 \
+    --hash=sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8 \
+    --hash=sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5
+    # via
+    #   anyio
+    #   mcp
+    #   mcp-types
+    #   opentelemetry-api
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+urllib3==2.8.0 \
+    --hash=sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3 \
+    --hash=sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63
+    # via requests

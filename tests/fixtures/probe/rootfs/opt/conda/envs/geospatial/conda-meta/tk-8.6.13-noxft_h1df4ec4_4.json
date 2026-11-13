@@ -1,0 +1,63 @@
+{
+  "arch": "x86_64",
+  "build": "noxft_h1df4ec4_4",
+  "build_number": 104,
+  "build_string": "noxft_h1df4ec4_4",
+  "channel": "conda-forge",
+  "constrains": [
+    "xorg-libx11 >=1.8.13,<2.0a0"
+  ],
+  "depends": [
+    "libgcc >=15",
+    "__glibc >=2.17,<3.0.a0",
+    "libzlib >=1.3.2,<2.0a0"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4",
+  "files": [
+    "bin/sqlite3_analyzer",
+    "bin/tclsh",
+    "bin/tclsh8.6"
+  ],
+  "fn": "tk-8.6.13-noxft_h1df4ec4_4.conda",
+  "license": "TCL",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4",
+    "type": 1
+  },
+  "md5": "676a2f9b1c4fcf57b70aa5c65f6c60d0",
+  "name": "tk",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/sqlite3_analyzer",
+        "path_type": "hardlink",
+        "sha256": "5889070b146a012ef470ebfe7b6473e479a7555119ea15c38d9100a34783d479",
+        "sha256_in_prefix": "5889070b146a012ef470ebfe7b6473e479a7555119ea15c38d9100a34783d479",
+        "size_in_bytes": 30392
+      },
+      {
+        "_path": "bin/tclsh",
+        "path_type": "softlink",
+        "sha256_in_prefix": "6202b15ca26eb69bf6460cf42da4d7c8c0279b554e7dd8b31a98963577464cf9",
+        "size_in_bytes": 8
+      },
+      {
+        "_path": "bin/tclsh8.6",
+        "path_type": "hardlink",
+        "sha256": "6202b15ca26eb69bf6460cf42da4d7c8c0279b554e7dd8b31a98963577464cf9",
+        "sha256_in_prefix": "6202b15ca26eb69bf6460cf42da4d7c8c0279b554e7dd8b31a98963577464cf9",
+        "size_in_bytes": 16096
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "a1a241d172c1ccab067ba245206dd048bc3c2d1b84504b53c9468e99adfc16a1",
+  "size": 3566806,
+  "subdir": "linux-64",
+  "timestamp": 1787272857,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4.conda",
+  "version": "8.6.13"
+}

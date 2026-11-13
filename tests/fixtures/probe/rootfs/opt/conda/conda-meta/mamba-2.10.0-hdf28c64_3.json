@@ -1,0 +1,66 @@
+{
+  "arch": "x86_64",
+  "build": "hdf28c64_3",
+  "build_number": 3,
+  "build_string": "hdf28c64_3",
+  "channel": "conda-forge",
+  "constrains": [
+    "ca-certificates >=2026.10.19"
+  ],
+  "depends": [
+    "libmamba ==2.10.0 py313h1fe55f6_3",
+    "__glibc >=2.17,<3.0.a0",
+    "zstd >=1.5.7,<1.6.0a0",
+    "reproc-cpp >=14.2.8.post0,<14.3.0a0",
+    "reproc >=14.2.8.post0,<14.3.0a0",
+    "libmamba >=2.10.0,<2.11.0a0"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/mamba-2.10.0-hdf28c64_3",
+  "files": [
+    "bin/mamba",
+    "condabin/mamba",
+    "etc/profile.d/mamba.sh"
+  ],
+  "fn": "mamba-2.10.0-hdf28c64_3.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/mamba-2.10.0-hdf28c64_3",
+    "type": 1
+  },
+  "md5": "16e3022fb55820c38ad580d0c0834ac2",
+  "name": "mamba",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/mamba-2.10.0-hdf28c64_3.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/mamba",
+        "path_type": "hardlink",
+        "sha256": "5bd6704504fab864181704fac4608e3feab6df7bade39295388958b1670d30ef",
+        "sha256_in_prefix": "b37fca36ef4a1ec8e13c32681cffe854a9c5654e37b3c316b24a90ebc6334195",
+        "size_in_bytes": 2246032
+      },
+      {
+        "_path": "condabin/mamba",
+        "path_type": "softlink",
+        "sha256_in_prefix": "b37fca36ef4a1ec8e13c32681cffe854a9c5654e37b3c316b24a90ebc6334195",
+        "size_in_bytes": 12
+      },
+      {
+        "_path": "etc/profile.d/mamba.sh",
+        "path_type": "hardlink",
+        "sha256": "954aabe9adfc16a5dfad765c5e33632ce5e71d77ff1bacd1b4c398e7b736e63e",
+        "sha256_in_prefix": "1297b1b7bf1beec6187d0b487f64756e3cda5f86cf59dc1c23f931fc101dd147",
+        "size_in_bytes": 2336
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "mamba==2.10.0",
+  "sha256": "b2e5275ea800db45ee510263c3bd830733556cfdaa45a27eb84f20f11566cccd",
+  "size": 679350,
+  "subdir": "linux-64",
+  "timestamp": 1793537951,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/mamba-2.10.0-hdf28c64_3.conda",
+  "version": "2.10.0"
+}

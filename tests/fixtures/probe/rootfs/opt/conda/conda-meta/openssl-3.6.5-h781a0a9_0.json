@@ -1,0 +1,63 @@
+{
+  "arch": "x86_64",
+  "build": "h781a0a9_0",
+  "build_number": 0,
+  "build_string": "h781a0a9_0",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "ca-certificates",
+    "libgcc >=15"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0",
+  "files": [
+    "bin/c_rehash",
+    "bin/openssl",
+    "include/openssl/aes.h"
+  ],
+  "fn": "openssl-3.6.5-h781a0a9_0.conda",
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0",
+    "type": 1
+  },
+  "md5": "5a51a2ea653f120240b1a9bf76e0aae9",
+  "name": "openssl",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/c_rehash",
+        "path_type": "hardlink",
+        "sha256": "fa0f370ff0c17d15024feb3dec613429b9ad82da66689fe89def93c31fc2639d",
+        "sha256_in_prefix": "7625545955b53a3418b0978b48876f037ee29cc29f05b549f483c06f904d1237",
+        "size_in_bytes": 7187
+      },
+      {
+        "_path": "bin/openssl",
+        "path_type": "hardlink",
+        "sha256": "36c57dc318a720cff9acde104f633fd4b8eef0f5a4cba0dbbc3869cd026aec41",
+        "sha256_in_prefix": "36c57dc318a720cff9acde104f633fd4b8eef0f5a4cba0dbbc3869cd026aec41",
+        "size_in_bytes": 1309928
+      },
+      {
+        "_path": "include/openssl/aes.h",
+        "path_type": "hardlink",
+        "sha256": "130e304c466bda5db6de2fdbca3a970905070ab935d702e61c8371334851ea27",
+        "sha256_in_prefix": "130e304c466bda5db6de2fdbca3a970905070ab935d702e61c8371334851ea27",
+        "size_in_bytes": 3311
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c",
+  "size": 3195299,
+  "subdir": "linux-64",
+  "timestamp": 1791098052,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda",
+  "version": "3.6.5"
+}

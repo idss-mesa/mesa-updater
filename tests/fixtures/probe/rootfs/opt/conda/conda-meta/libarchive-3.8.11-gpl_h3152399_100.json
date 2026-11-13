@@ -1,0 +1,71 @@
+{
+  "arch": "x86_64",
+  "build": "gpl_h3152399_100",
+  "build_number": 100,
+  "build_string": "gpl_h3152399_100",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "bzip2 >=1.0.8,<2.0a0",
+    "libgcc >=15",
+    "liblzma >=5.8.3,<6.0a0",
+    "libxml2",
+    "libxml2-16 >=2.15.4",
+    "libzlib >=1.3.2,<2.0a0",
+    "lz4-c >=1.10.0,<1.11.0a0",
+    "lzo >=2.10,<3.0a0",
+    "openssl >=3.5.9,<4.0a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/libarchive-3.8.11-gpl_h3152399_100",
+  "files": [
+    "bin/bsdcat",
+    "bin/bsdcpio",
+    "bin/bsdtar"
+  ],
+  "fn": "libarchive-3.8.11-gpl_h3152399_100.conda",
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/libarchive-3.8.11-gpl_h3152399_100",
+    "type": 1
+  },
+  "md5": "e0d4df4a6b54a62bd7f12e52a6158bd9",
+  "name": "libarchive",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/libarchive-3.8.11-gpl_h3152399_100.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/bsdcat",
+        "path_type": "hardlink",
+        "sha256": "20814b5b77e5281bbf1724fc7572b8537384f99f0f668247cfd927661d2f52b6",
+        "sha256_in_prefix": "20814b5b77e5281bbf1724fc7572b8537384f99f0f668247cfd927661d2f52b6",
+        "size_in_bytes": 101768
+      },
+      {
+        "_path": "bin/bsdcpio",
+        "path_type": "hardlink",
+        "sha256": "73332c1f987aa624449d743752504db26408d0073cea51350aebd0e85a557cb1",
+        "sha256_in_prefix": "73332c1f987aa624449d743752504db26408d0073cea51350aebd0e85a557cb1",
+        "size_in_bytes": 907064
+      },
+      {
+        "_path": "bin/bsdtar",
+        "path_type": "hardlink",
+        "sha256": "1bbace7fb1001710765d03f2033d3fd1ecd49ebafc59bea89a1d4f992cb19ad3",
+        "sha256_in_prefix": "1bbace7fb1001710765d03f2033d3fd1ecd49ebafc59bea89a1d4f992cb19ad3",
+        "size_in_bytes": 969632
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "",
+  "sha256": "0b13f801fa48194d18819b0dc1aac182ea88089f81b87af2d3bacd69d3ff5cc5",
+  "size": 878657,
+  "subdir": "linux-64",
+  "timestamp": 1793447199,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libarchive-3.8.11-gpl_h3152399_100.conda",
+  "version": "3.8.11"
+}

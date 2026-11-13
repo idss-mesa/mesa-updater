@@ -1,0 +1,1234 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "version": 1,
+ "metadata": {
+  "properties": [
+   {
+    "name": "mesa:probe:image",
+    "value": "harbor.cyverse.org/vice/mesa-cli:latest"
+   },
+   {
+    "name": "mesa:probe:skipped",
+    "value": "0"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "name": "_openmp_mutex",
+   "version": "4.5",
+   "purl": "pkg:conda/_openmp_mutex@4.5?build=20_gnu&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/_openmp_mutex@4.5?build=20_gnu&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "1dd3fffd892081df9726d7eb7e0dea6198962ba775bd88842135a4ddb4deb3c9"
+    },
+    {
+     "alg": "MD5",
+     "content": "a9f577daf3de00bca7c3c76c0ecbd1de"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "_x86_64-microarch-level",
+   "version": "4",
+   "purl": "pkg:conda/_x86_64-microarch-level@4?build=3_x86_64_v4&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/_x86_64-microarch-level@4?build=3_x86_64_v4&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "3d827eecfd39d2ce6af2f983747f79c8d3639e08402b617080ec08f0b995877e"
+    },
+    {
+     "alg": "MD5",
+     "content": "2ba38115c0be03aec2c34fa83d678c44"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/_x86_64-microarch-level-4-3_x86_64_v4.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "brotli-python",
+   "version": "1.0.9",
+   "purl": "pkg:conda/brotli-python@1.0.9?build=py310hd8f1fbe_8&channel=conda-forge&subdir=linux-64&type=tar.bz2",
+   "bom-ref": "pkg:conda/brotli-python@1.0.9?build=py310hd8f1fbe_8&channel=conda-forge&subdir=linux-64&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "a8dddc63315c2377dfb31f15e0f7dbb6646ad31555c4e0972e197c80548c44f5"
+    },
+    {
+     "alg": "MD5",
+     "content": "e3852120550a5c510af6f3dd3de391b8"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/brotli-python-1.0.9-py310hd8f1fbe_8.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "ca-certificates",
+   "version": "2026.10.23",
+   "purl": "pkg:conda/ca-certificates@2026.10.23?build=hbd8a1cb_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/ca-certificates@2026.10.23?build=hbd8a1cb_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "95619b9c1184be7175392eeb0ee7eeb5ccf25d280951f4225f2d62e725790be3"
+    },
+    {
+     "alg": "MD5",
+     "content": "3fd02989038a1e1cee627c14c2d73f29"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "certifi",
+   "version": "2026.10.23",
+   "purl": "pkg:conda/certifi@2026.10.23?build=pyhd8ed1ab_3&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/certifi@2026.10.23?build=pyhd8ed1ab_3&channel=conda-forge&subdir=noarch&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "e17d21d2f133cae8eede0eef5a8acfa076b1999d00f11e714e1d18c2c8fd02c6"
+    },
+    {
+     "alg": "MD5",
+     "content": "6e761a5c8fd92be3a9fec46ade31b481"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/certifi-2026.10.23-pyhd8ed1ab_3.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "certifi",
+   "version": "2026.10.23",
+   "purl": "pkg:conda/certifi@2026.10.23?build=pyhd8ed1ab_3&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/certifi@2026.10.23?build=pyhd8ed1ab_3&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "e17d21d2f133cae8eede0eef5a8acfa076b1999d00f11e714e1d18c2c8fd02c6"
+    },
+    {
+     "alg": "MD5",
+     "content": "6e761a5c8fd92be3a9fec46ade31b481"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/certifi-2026.10.23-pyhd8ed1ab_3.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "font-ttf-dejavu-sans-mono",
+   "version": "2.37",
+   "purl": "pkg:conda/font-ttf-dejavu-sans-mono@2.37?build=hab24e00_0&channel=conda-forge&subdir=noarch&type=tar.bz2",
+   "bom-ref": "pkg:conda/font-ttf-dejavu-sans-mono@2.37?build=hab24e00_0&channel=conda-forge&subdir=noarch&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "58d7f40d2940dd0a8aa28651239adbf5613254df0f75789919c4e6762054403b"
+    },
+    {
+     "alg": "MD5",
+     "content": "0c96522c6bdaed4b1566d11387caaf45"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-dejavu-sans-mono-2.37-hab24e00_0.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "font-ttf-inconsolata",
+   "version": "3.000",
+   "purl": "pkg:conda/font-ttf-inconsolata@3.000?build=h77eed37_0&channel=conda-forge&subdir=noarch&type=tar.bz2",
+   "bom-ref": "pkg:conda/font-ttf-inconsolata@3.000?build=h77eed37_0&channel=conda-forge&subdir=noarch&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c52a29fdac682c20d252facc50f01e7c2e7ceac52aa9817aaf0bb83f7559ec5c"
+    },
+    {
+     "alg": "MD5",
+     "content": "34893075a5c9e55cdafac56607368fc6"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-inconsolata-3.000-h77eed37_0.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "font-ttf-source-code-pro",
+   "version": "2.038",
+   "purl": "pkg:conda/font-ttf-source-code-pro@2.038?build=h77eed37_0&channel=conda-forge&subdir=noarch&type=tar.bz2",
+   "bom-ref": "pkg:conda/font-ttf-source-code-pro@2.038?build=h77eed37_0&channel=conda-forge&subdir=noarch&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "00925c8c055a2275614b4d983e1df637245e19058d79fc7dd1a93b8d9fb4b139"
+    },
+    {
+     "alg": "MD5",
+     "content": "4d59c254e01d9cde7957100457e2d5fb"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-source-code-pro-2.038-h77eed37_0.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "fonts-conda-ecosystem",
+   "version": "1",
+   "purl": "pkg:conda/fonts-conda-ecosystem@1?build=0&channel=conda-forge&subdir=noarch&type=tar.bz2",
+   "bom-ref": "pkg:conda/fonts-conda-ecosystem@1?build=0&channel=conda-forge&subdir=noarch&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "a997f2f1921bb9c9d76e6fa2f6b408b7fa549edd349a77639c9fe7a23ea93e61"
+    },
+    {
+     "alg": "MD5",
+     "content": "fee5683a3f04bd15cbd8318b096a27ab"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "gdal",
+   "version": "3.11.4",
+   "purl": "pkg:conda/gdal@3.11.4?build=py310hb501871_9&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/gdal@3.11.4?build=py310hb501871_9&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "56a2a97628f3eb8a570f0b3180bfb108075cfd3afce81d9d2dcba9d94c8ed719"
+    },
+    {
+     "alg": "MD5",
+     "content": "6738913417e475f8caa0f88925b727a9"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/gdal-3.11.4-py310hb501871_9.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "geopandas",
+   "version": "1.1.4",
+   "purl": "pkg:conda/geopandas@1.1.4?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/geopandas@1.1.4?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "cd478c0835106afce2478d6dcc525854219c4e710c7b446e2dd5042bfc9da082"
+    },
+    {
+     "alg": "MD5",
+     "content": "99d77e0f92f7b0b977f77cfb49c7eaf6"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/geopandas-1.1.4-pyhd8ed1ab_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "laszip",
+   "version": "3.4.3",
+   "purl": "pkg:conda/laszip@3.4.3?build=h9c3ff4c_2&channel=conda-forge&subdir=linux-64&type=tar.bz2",
+   "bom-ref": "pkg:conda/laszip@3.4.3?build=h9c3ff4c_2&channel=conda-forge&subdir=linux-64&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "3b2db76ad2d057ba3dc1325609839862c47b818df039063de93ccd11837da204"
+    },
+    {
+     "alg": "MD5",
+     "content": "f99abefd6976c4b1ca3c976b1a86d34c"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/laszip-3.4.3-h9c3ff4c_2.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "libcrc32c",
+   "version": "1.1.2",
+   "purl": "pkg:conda/libcrc32c@1.1.2?build=h9c3ff4c_0&channel=conda-forge&subdir=linux-64&type=tar.bz2",
+   "bom-ref": "pkg:conda/libcrc32c@1.1.2?build=h9c3ff4c_0&channel=conda-forge&subdir=linux-64&type=tar.bz2#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "fd1d153962764433fe6233f34a72cdeed5dcf8a883a85769e8295ce940b5b0c5"
+    },
+    {
+     "alg": "MD5",
+     "content": "c965a5aa0d5c1c37ffc62dff36e28400"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/libcrc32c-1.1.2-h9c3ff4c_0.tar.bz2"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "libgcc",
+   "version": "16.2.0",
+   "purl": "pkg:conda/libgcc@16.2.0?build=ha9f2e26_7&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/libgcc@16.2.0?build=ha9f2e26_7&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "e031634c3a928f9594eba868bc46ef5230d6571a364a0c63215b06c4563bfcea"
+    },
+    {
+     "alg": "MD5",
+     "content": "735629b400b70eeab21a2ba8f5b1c2ce"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "libgdal-core",
+   "version": "3.11.4",
+   "purl": "pkg:conda/libgdal-core@3.11.4?build=hed660dc_1&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/libgdal-core@3.11.4?build=hed660dc_1&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "745fa9e7a64da05313989b566610c4f5e8931e321d45ff6ee791561a493d5935"
+    },
+    {
+     "alg": "MD5",
+     "content": "78bc52bc221d5b2e94a2d7e40d11941d"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/libgdal-core-3.11.4-hed660dc_1.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "libgdal-hdf5",
+   "version": "3.11.4",
+   "purl": "pkg:conda/libgdal-hdf5@3.11.4?build=h966a9c2_1&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/libgdal-hdf5@3.11.4?build=h966a9c2_1&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "fd796d17eb8056f734dcc34dbe99eeb0908f63b7d72adc0a9ff000dbdee5b619"
+    },
+    {
+     "alg": "MD5",
+     "content": "7c64e3934e3b7ffbb396bdac85009f37"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/libgdal-hdf5-3.11.4-h966a9c2_1.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "libstdcxx",
+   "version": "16.2.0",
+   "purl": "pkg:conda/libstdcxx@16.2.0?build=h934c35e_7&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/libstdcxx@16.2.0?build=h934c35e_7&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "fa7018298629fc429971fffd6ecba3d27a7b02e4e890d6a93ea01ffebe8cb745"
+    },
+    {
+     "alg": "MD5",
+     "content": "9b6707e0caca917fa6ea9ee473f37a5d"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "numpy",
+   "version": "2.2.6",
+   "purl": "pkg:conda/numpy@2.2.6?build=py310hefbff90_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/numpy@2.2.6?build=py310hefbff90_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "0ba94a61f91d67413e60fa8daa85627a8f299b5054b0eff8f93d26da83ec755e"
+    },
+    {
+     "alg": "MD5",
+     "content": "b0cea2c364bf65cd19e023040eeab05d"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "openssl",
+   "version": "3.6.5",
+   "purl": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c"
+    },
+    {
+     "alg": "MD5",
+     "content": "5a51a2ea653f120240b1a9bf76e0aae9"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "openssl",
+   "version": "3.6.5",
+   "purl": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/openssl@3.6.5?build=h781a0a9_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c"
+    },
+    {
+     "alg": "MD5",
+     "content": "5a51a2ea653f120240b1a9bf76e0aae9"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pdal",
+   "version": "2.9.2",
+   "purl": "pkg:conda/pdal@2.9.2?build=he64977a_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/pdal@2.9.2?build=he64977a_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "5220d6be2e15eb7c8ba117df78e1603f83209d350b2068e7cef7b1cafedb6fb9"
+    },
+    {
+     "alg": "MD5",
+     "content": "d0c93260ca828d939cf7c553b5941ca2"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/pdal-2.9.2-he64977a_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pip",
+   "version": "26.2.1",
+   "purl": "pkg:conda/pip@26.2.1?build=pyh8b19718_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/pip@26.2.1?build=pyh8b19718_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c205bae42eb11b364fe3663a817cbcbc20a8ef544c6b2ff6f391013487117259"
+    },
+    {
+     "alg": "MD5",
+     "content": "77b6cf3b0689d9fc68561df0db9b856d"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/pip-26.2.1-pyh8b19718_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pip",
+   "version": "26.2.2",
+   "purl": "pkg:conda/pip@26.2.2?build=pyh145f28c_2&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/pip@26.2.2?build=pyh145f28c_2&channel=conda-forge&subdir=noarch&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "05d34ae3b49973c05c0f2f0f742e202acc6145f733460a0798944b231efd5c1a"
+    },
+    {
+     "alg": "MD5",
+     "content": "48dd7d949a3d2106ed942dcd8f9ceb80"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/pip-26.2.2-pyh145f28c_2.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "proj",
+   "version": "9.6.2",
+   "purl": "pkg:conda/proj@9.6.2?build=h18fbb6c_2&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/proj@9.6.2?build=h18fbb6c_2&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c1c9e38646a2d07007844625c8dea82404c8785320f8a6326b9338f8870875d0"
+    },
+    {
+     "alg": "MD5",
+     "content": "1aeede769ec2fa0f474f8b73a7ac057f"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/proj-9.6.2-h18fbb6c_2.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "python-pdal",
+   "version": "3.5.3",
+   "purl": "pkg:conda/python-pdal@3.5.3?build=np2py310hb764e7b_2&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/python-pdal@3.5.3?build=np2py310hb764e7b_2&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "86c2120f666cdbe8b998728ab6d47431d5df7391ae2f73c639ec6da30d014425"
+    },
+    {
+     "alg": "MD5",
+     "content": "47ad2010701a36019429242dca5aa258"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/python-pdal-3.5.3-np2py310hb764e7b_2.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "python",
+   "version": "3.10.22",
+   "purl": "pkg:conda/python@3.10.22?build=h267e890_0_cpython&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/python@3.10.22?build=h267e890_0_cpython&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "819fa140a71ab005c448bf164eb182f91610b50f0bffca5b0b94cb6773c5e2f4"
+    },
+    {
+     "alg": "MD5",
+     "content": "4dd10eb73930c39aa7bc48b979fa24e0"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.10.22-h267e890_0_cpython.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "python",
+   "version": "3.13.18",
+   "purl": "pkg:conda/python@3.13.18?build=hf47f18c_100_cp313&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/python@3.13.18?build=hf47f18c_100_cp313&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "8c20b663f2da07fee96f5406651854727a18d173e84735b71136cf06d7032b47"
+    },
+    {
+     "alg": "MD5",
+     "content": "8a8f008a3e3ae6e4eb6e149d639ab43e"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.13.18-hf47f18c_100_cp313.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "python_abi",
+   "version": "3.10",
+   "purl": "pkg:conda/python_abi@3.10?build=9_cp310&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/python_abi@3.10?build=9_cp310&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "24e01bf97a2f5e608ef2d35547bba12281b5f1c8efecfcfd3447c43abc01342b"
+    },
+    {
+     "alg": "MD5",
+     "content": "3bb52811c66f1f07377537cc82ccb093"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/python_abi-3.10-9_cp310.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "tornado",
+   "version": "6.5.8",
+   "purl": "pkg:conda/tornado@6.5.8?build=py310h7c4b9e2_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/tornado@6.5.8?build=py310h7c4b9e2_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "1907534c54e5d0c70a7ee09e5a5da4a30d3568dbe997c1c04d637d551c496b34"
+    },
+    {
+     "alg": "MD5",
+     "content": "8a92f2064afaa510119b28ed49c17f22"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/tornado-6.5.8-py310h7c4b9e2_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "tornado",
+   "version": "6.6",
+   "purl": "pkg:conda/tornado@6.6?build=py313hd42f317_0&channel=conda-forge&subdir=linux-64&type=conda",
+   "bom-ref": "pkg:conda/tornado@6.6?build=py313hd42f317_0&channel=conda-forge&subdir=linux-64&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "2b7069d6efc07e320113d8379b2d5b4a483062ab46362d0d6521d7524d0df788"
+    },
+    {
+     "alg": "MD5",
+     "content": "071657f63057ce9b04606f5af881e48d"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/linux-64/tornado-6.6-py313hd42f317_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "tzdata",
+   "version": "2026e",
+   "purl": "pkg:conda/tzdata@2026e?build=h5d301ff_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/tzdata@2026e?build=h5d301ff_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "2b7ca858879f183ce2dcc65b300f48a0133d5430550f35b23d80d405a0788dbf"
+    },
+    {
+     "alg": "MD5",
+     "content": "abccc3810d2b97e570dee487f2b46e38"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "urllib3",
+   "version": "2.5.0",
+   "purl": "pkg:conda/urllib3@2.5.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/urllib3@2.5.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda/envs/geospatial",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "4fb9789154bd666ca74e428d973df81087a697dbb987775bc3198d2215f240f8"
+    },
+    {
+     "alg": "MD5",
+     "content": "436c165519e140cb08d246a4472a9d6a"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/urllib3-2.5.0-pyhd8ed1ab_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda/envs/geospatial"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "urllib3",
+   "version": "2.8.0",
+   "purl": "pkg:conda/urllib3@2.8.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda",
+   "bom-ref": "pkg:conda/urllib3@2.8.0?build=pyhd8ed1ab_0&channel=conda-forge&subdir=noarch&type=conda#/opt/conda",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "c5511c190ab55168ca412f3c54592fbf677ae6250784cb72b227a7cf3f538f7d"
+    },
+    {
+     "alg": "MD5",
+     "content": "407a3d3778570bae8e8fcf554e803e43"
+    }
+   ],
+   "externalReferences": [
+    {
+     "type": "distribution",
+     "url": "https://conda.anaconda.org/conda-forge/noarch/urllib3-2.8.0-pyhd8ed1ab_0.conda"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:probe:prefix",
+     "value": "/opt/conda"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "pkg:generic/go@1.27.3",
+   "name": "go",
+   "version": "1.27.3",
+   "purl": "pkg:generic/go@1.27.3",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pins"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "ci/pins.tsv"
+    },
+    {
+     "name": "mesa:lock:path",
+     "value": "/usr/local/go"
+    },
+    {
+     "name": "mesa:lock:probe",
+     "value": "/usr/local/go/bin/go version"
+    },
+    {
+     "name": "mesa:lock:url",
+     "value": "https://go.dev/dl/go{version}.linux-{arch}.tar.gz"
+    },
+    {
+     "name": "mesa:probe:result",
+     "value": "ok"
+    },
+    {
+     "name": "mesa:probe:output",
+     "value": "go version go1.27.3 linux/amd64"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "pkg:generic/gocmd@0.12.5",
+   "name": "gocmd",
+   "version": "0.12.5",
+   "purl": "pkg:generic/gocmd@0.12.5",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "af551f8cb2f3f5df63fb3a8eb1bf605c7f27e50ec10283a5375190239db9f57a"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pins"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "ci/pins.tsv"
+    },
+    {
+     "name": "mesa:lock:path",
+     "value": "/usr/local/bin/gocmd"
+    },
+    {
+     "name": "mesa:lock:probe",
+     "value": "gocmd --version"
+    },
+    {
+     "name": "mesa:lock:url",
+     "value": "https://github.com/cyverse/gocommands/releases/download/v{version}/gocmd-v{version}-linux-{arch}.tar.gz"
+    },
+    {
+     "name": "mesa:probe:result",
+     "value": "ok"
+    },
+    {
+     "name": "mesa:probe:output",
+     "value": "{\n  \"clientVersion\": \"v0.12.5\",\n  \"gitCommit\": \"7228a29327d6b7915ecf822f10156e0dc9f83e4f\",\n  \"buildDate\": \"2026-10-02T20:09:59Z\",\n  \"goVersion\": \"go1.27.1\",\n  \"compiler\": \"gc\",\n  \"platform\": \"linux/am"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "pkg:generic/node@22.23.4",
+   "name": "node",
+   "version": "22.23.4",
+   "purl": "pkg:generic/node@22.23.4",
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pins"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "ci/pins.tsv"
+    },
+    {
+     "name": "mesa:lock:path",
+     "value": "/usr/local/bin/node"
+    },
+    {
+     "name": "mesa:lock:probe",
+     "value": "node --version"
+    },
+    {
+     "name": "mesa:lock:url",
+     "value": "https://nodejs.org/dist/v{version}/node-v{version}-linux-{node_arch}.tar.xz"
+    },
+    {
+     "name": "mesa:probe:result",
+     "value": "ok"
+    },
+    {
+     "name": "mesa:probe:output",
+     "value": "v22.23.4"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "pkg:github/krallin/tini@v0.19.0",
+   "name": "tini",
+   "version": "v0.19.0",
+   "purl": "pkg:github/krallin/tini@v0.19.0",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "93dcc18adc78c65a028a84799ecf8ad40c936fdfc5f2a57b1acda5a8117fa82c"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pins"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "ci/pins.tsv"
+    },
+    {
+     "name": "mesa:lock:path",
+     "value": "/usr/bin/tini"
+    },
+    {
+     "name": "mesa:lock:probe",
+     "value": "tini --version"
+    },
+    {
+     "name": "mesa:lock:url",
+     "value": "https://github.com/krallin/tini/releases/download/v{version}/tini-{arch}"
+    },
+    {
+     "name": "mesa:probe:result",
+     "value": "ok"
+    },
+    {
+     "name": "mesa:probe:output",
+     "value": "tini version 0.19.0 - git.de40ad0"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "pkg:github/tsl0922/ttyd@1.7.7",
+   "name": "ttyd",
+   "version": "1.7.7",
+   "purl": "pkg:github/tsl0922/ttyd@1.7.7",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "8a217c968aba172e0dbf3f34447218dc015bc4d5e59bf51db2f2cd12b7be4f55"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mesa:lock:kind",
+     "value": "pins"
+    },
+    {
+     "name": "mesa:lock:layer",
+     "value": "cpu"
+    },
+    {
+     "name": "mesa:lock:file",
+     "value": "ci/pins.tsv"
+    },
+    {
+     "name": "mesa:lock:path",
+     "value": "/usr/local/bin/ttyd"
+    },
+    {
+     "name": "mesa:lock:probe",
+     "value": "ttyd --version"
+    },
+    {
+     "name": "mesa:lock:url",
+     "value": "https://github.com/tsl0922/ttyd/releases/download/{version}/ttyd.{ttyd_arch}"
+    },
+    {
+     "name": "mesa:probe:result",
+     "value": "ok"
+    },
+    {
+     "name": "mesa:probe:output",
+     "value": "ttyd version 1.7.7-40e79c7"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,614 @@
+{
+ "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:115532e4-4508-4310-9a97-18d41df18aae",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2026-11-12T08:22:59-07:00",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "author": "anchore",
+     "name": "syft",
+     "version": "1.57.1"
+    }
+   ]
+  },
+  "component": {
+   "bom-ref": "74881c0d05160a33",
+   "type": "container",
+   "name": "harbor.cyverse.org/vice/mesa-rstudio",
+   "version": "sha256:6fdba3408ae806e83df74c0aa8e0b7b3f4d8df9e9309a8978b4c21885b0b468b"
+  },
+  "properties": [
+   {
+    "name": "syft:image:labels:org.label-schema.description",
+    "value": "Rocker geospatial RStudio Server with agentic AI CLIs and MESA MCP servers for CyVerse VICE"
+   },
+   {
+    "name": "syft:image:labels:org.label-schema.name",
+    "value": "CyVerse VICE MESA RStudio Geospatial"
+   },
+   {
+    "name": "syft:image:labels:org.label-schema.schema-version",
+    "value": "1.0.0"
+   },
+   {
+    "name": "syft:image:labels:org.label-schema.url",
+    "value": "https://cyverse.org"
+   },
+   {
+    "name": "syft:image:labels:org.label-schema.vcs-url",
+    "value": "https://github.com/idss-mesa/rstudio"
+   },
+   {
+    "name": "syft:image:labels:org.label-schema.vendor",
+    "value": "CyVerse"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.authors",
+    "value": "Carl Boettiger <cboettig@ropensci.org>"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.base.name",
+    "value": "docker.io/library/ubuntu:resolute"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.created",
+    "value": "2026-10-25T10:26:07.538865+00:00"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.description",
+    "value": "Docker-based Geospatial toolkit for R, built on versioned Rocker image."
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.licenses",
+    "value": "GPL-2.0-or-later"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.revision",
+    "value": "387ff93fc4af10c7b4530f8037db048d47b8e53a"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.source",
+    "value": "https://github.com/rocker-org/rocker-versioned2"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.title",
+    "value": "rocker/geospatial"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.vendor",
+    "value": "Rocker Project"
+   },
+   {
+    "name": "syft:image:labels:org.opencontainers.image.version",
+    "value": "R-4.6.2"
+   }
+  ]
+ },
+ "components": [
+  {
+   "bom-ref": "pkg:cran/BH@1.90.0-1?package-id=70ea7572d2be035f",
+   "type": "library",
+   "name": "BH",
+   "version": "1.90.0-1",
+   "licenses": [
+    {
+     "license": {
+      "id": "BSL-1.0"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:BH:BH:1.90.0-1:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/BH@1.90.0-1",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/BH/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/DBI@1.3.0?package-id=ed963dfa2465756d",
+   "type": "library",
+   "name": "DBI",
+   "version": "1.3.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "LGPL-2.1-or-later"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:DBI:DBI:1.3.0:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/DBI@1.3.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/DBI/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/MASS@7.3-66?package-id=484198f7ef2337fc",
+   "type": "library",
+   "name": "MASS",
+   "version": "7.3-66",
+   "licenses": [
+    {
+     "license": {
+      "id": "GPL-2.0-only"
+     }
+    },
+    {
+     "license": {
+      "id": "GPL-3.0-only"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:MASS:MASS:7.3-66:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/MASS@7.3-66",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:d217d293fc7c5e1f183312d867bd2fa93cac24eb87f205fc22e58cd895ad180d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/library/MASS/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/R6@2.5.1?package-id=03ce9c94b37d2ca0",
+   "type": "library",
+   "name": "R6",
+   "version": "2.5.1",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:R6:R6:2.5.1:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/R6@2.5.1",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/pak/library/R6/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/R6@2.6.1?package-id=76a1d3dab8142898",
+   "type": "library",
+   "name": "R6",
+   "version": "2.6.1",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:R6:R6:2.6.1:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/R6@2.6.1",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/R6/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/Rcpp@1.1.2?package-id=f6bf7a2d92c5d3ed",
+   "type": "library",
+   "name": "Rcpp",
+   "version": "1.1.2",
+   "licenses": [
+    {
+     "license": {
+      "id": "GPL-2.0-or-later"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:Rcpp:Rcpp:1.1.2:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/Rcpp@1.1.2",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/Rcpp/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/base@4.6.2?package-id=acb180bcda207ce8",
+   "type": "library",
+   "name": "base",
+   "version": "4.6.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "Part of R 4.6.2"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:base:base:4.6.2:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/base@4.6.2",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:d217d293fc7c5e1f183312d867bd2fa93cac24eb87f205fc22e58cd895ad180d"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/library/base/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/data.table@1.18.6.1?package-id=3118abce6573fb92",
+   "type": "library",
+   "name": "data.table",
+   "version": "1.18.6.1",
+   "licenses": [
+    {
+     "license": {
+      "id": "MPL-2.0"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:data.table:data.table:1.18.6.1:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/data.table@1.18.6.1",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/data.table/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/duckdb@2.0.0?package-id=63b531a2f8238a1e",
+   "type": "library",
+   "name": "duckdb",
+   "version": "2.0.0",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:duckdb:duckdb:2.0.0:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/duckdb@2.0.0",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:de3e075b7316c918d8c50a79e6f48df780bba1e989e0b8af6eb97f685e44ed70"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/duckdb/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/sf@1.1-3?package-id=d5202433cb9712b2",
+   "type": "library",
+   "name": "sf",
+   "version": "1.1-3",
+   "licenses": [
+    {
+     "license": {
+      "id": "GPL-2.0-only"
+     }
+    },
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:sf:sf:1.1-3:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/sf@1.1-3",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/sf/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "pkg:cran/terra@1.9-50?package-id=231d00707f5e5fdc",
+   "type": "library",
+   "name": "terra",
+   "version": "1.9-50",
+   "licenses": [
+    {
+     "license": {
+      "id": "GPL-3.0-or-later"
+     }
+    }
+   ],
+   "cpe": "cpe:2.3:a:terra:terra:1.9-50:*:*:*:*:*:*:*",
+   "purl": "pkg:cran/terra@1.9-50",
+   "properties": [
+    {
+     "name": "syft:package:foundBy",
+     "value": "r-package-cataloger"
+    },
+    {
+     "name": "syft:package:language",
+     "value": "R"
+    },
+    {
+     "name": "syft:package:type",
+     "value": "R-package"
+    },
+    {
+     "name": "syft:package:metadataType",
+     "value": "r-description"
+    },
+    {
+     "name": "syft:location:0:layerID",
+     "value": "sha256:3b334abecc6278dffcb43e683cc9ff8b1e1e629c1a9809ac0c1f5ce289d3170f"
+    },
+    {
+     "name": "syft:location:0:path",
+     "value": "/usr/local/lib/R/site-library/terra/DESCRIPTION"
+    }
+   ]
+  },
+  {
+   "bom-ref": "os:ubuntu@26.04",
+   "type": "operating-system",
+   "name": "ubuntu",
+   "version": "26.04",
+   "description": "Ubuntu 26.04.1 LTS",
+   "swid": {
+    "tagId": "ubuntu",
+    "name": "ubuntu",
+    "version": "26.04"
+   },
+   "externalReferences": [
+    {
+     "url": "https://bugs.launchpad.net/ubuntu/",
+     "type": "issue-tracker"
+    },
+    {
+     "url": "https://www.ubuntu.com/",
+     "type": "website"
+    },
+    {
+     "url": "https://help.ubuntu.com/",
+     "comment": "support",
+     "type": "other"
+    },
+    {
+     "url": "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy",
+     "comment": "privacyPolicy",
+     "type": "other"
+    }
+   ],
+   "properties": [
+    {
+     "name": "syft:distro:extendedSupport",
+     "value": "false"
+    },
+    {
+     "name": "syft:distro:id",
+     "value": "ubuntu"
+    },
+    {
+     "name": "syft:distro:idLike:0",
+     "value": "debian"
+    },
+    {
+     "name": "syft:distro:prettyName",
+     "value": "Ubuntu 26.04.1 LTS"
+    },
+    {
+     "name": "syft:distro:versionCodename",
+     "value": "resolute"
+    },
+    {
+     "name": "syft:distro:versionID",
+     "value": "26.04"
+    }
+   ]
+  }
+ ],
+ "dependencies": []
+}

@@ -1,0 +1,61 @@
+{
+  "build": "pyhe01879c_2",
+  "build_number": 2,
+  "build_string": "pyhe01879c_2",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "python >=3.9",
+    "six >=1.5",
+    "python"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2",
+  "files": [
+    "lib/python3.10/site-packages/dateutil/__init__.py",
+    "lib/python3.10/site-packages/dateutil/_common.py",
+    "lib/python3.10/site-packages/dateutil/_version.py"
+  ],
+  "fn": "python-dateutil-2.9.0.post0-pyhe01879c_2.conda",
+  "license": "Apache-2.0",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2",
+    "type": 1
+  },
+  "md5": "5b8d21249ff20967101ffa321cab24e8",
+  "name": "python-dateutil",
+  "noarch": "python",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.10/site-packages/dateutil/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "32a6a6ebb58ef4891399417223aeaf4ba2284974e9f46dfcf0369d1f62c230b6",
+        "sha256_in_prefix": "32a6a6ebb58ef4891399417223aeaf4ba2284974e9f46dfcf0369d1f62c230b6",
+        "size_in_bytes": 620
+      },
+      {
+        "_path": "lib/python3.10/site-packages/dateutil/_common.py",
+        "path_type": "hardlink",
+        "sha256": "efbc34cb2b64af19586d29fefa50d53d431a6d45d147d237941bffbd0454a946",
+        "sha256_in_prefix": "efbc34cb2b64af19586d29fefa50d53d431a6d45d147d237941bffbd0454a946",
+        "size_in_bytes": 932
+      },
+      {
+        "_path": "lib/python3.10/site-packages/dateutil/_version.py",
+        "path_type": "hardlink",
+        "sha256": "d9ca0d40dfbee3a56d284dd265ee23f9130c3dcbe94c31e02ed7af047498cf26",
+        "sha256_in_prefix": "d9ca0d40dfbee3a56d284dd265ee23f9130c3dcbe94c31e02ed7af047498cf26",
+        "size_in_bytes": 526
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "",
+  "sha256": "d6a17ece93bbd5139e02d2bd7dbfa80bee1a4261dced63f65f679121686bf664",
+  "size": 233310,
+  "subdir": "noarch",
+  "timestamp": 1751104122,
+  "url": "https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda",
+  "version": "2.9.0.post0"
+}

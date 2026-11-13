@@ -1,0 +1,3 @@
+# Lock set for rstudio.cdx.json (cut of the real mesa-rstudio scan): the CRAN packages of tests/fixtures/locks.
+# kind	layer	arch	file	prefix
+cran	cpu	*	sbom/cran.tsv	/usr/local/lib/R/site-library

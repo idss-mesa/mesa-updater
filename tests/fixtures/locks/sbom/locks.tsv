@@ -1,0 +1,14 @@
+# Miniature image repo for tests/test_sbom_from_locks.py. Columns: ci/README.md, 'sbom/locks.tsv'.
+# kind	layer	arch	file	prefix
+base	cpu	*	bash/Dockerfile	-
+pins	cpu	*	ci/pins.tsv	-
+pip	cpu	amd64	sbom/pip/mesa-venv.amd64.txt	/opt/mesa
+pip	cpu	arm64	sbom/pip/mesa-venv.arm64.txt	/opt/mesa
+pip	cpu	*	sbom/pip/conda-base.txt	/opt/conda
+# the GPU layer pip-installs torch into the same prefix and replaces urllib3 there
+pip	gpu	amd64	sbom/pip/gpu-conda-base.amd64.txt	/opt/conda
+npm	cpu	*	sbom/npm/package-lock.json	/opt/mesa-agent-clis
+conda	cpu	amd64	sbom/conda/geospatial.amd64.lock	/opt/conda/envs/geospatial
+conda	cpu	arm64	sbom/conda/geospatial.arm64.lock	/opt/conda/envs/geospatial
+cran	cpu	*	sbom/cran.tsv	/usr/local/lib/R/site-library
+vsix	cpu	*	sbom/vsix.tsv	/config/.local/share/code-server/extensions

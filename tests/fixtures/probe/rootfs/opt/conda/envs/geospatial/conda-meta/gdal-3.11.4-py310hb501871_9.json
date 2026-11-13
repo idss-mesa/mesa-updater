@@ -1,0 +1,66 @@
+{
+  "arch": "x86_64",
+  "build": "py310hb501871_9",
+  "build_number": 9,
+  "build_string": "py310hb501871_9",
+  "channel": "conda-forge",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "libgdal-core 3.11.4.*",
+    "libstdcxx >=14",
+    "numpy >=1.21,<3",
+    "python >=3.10,<3.11.0a0",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/gdal-3.11.4-py310hb501871_9",
+  "files": [
+    "bin/__pycache__/gdal2tiles.cpython-310.pyc",
+    "bin/__pycache__/gdal2xyz.cpython-310.pyc",
+    "bin/__pycache__/gdal_calc.cpython-310.pyc"
+  ],
+  "fn": "gdal-3.11.4-py310hb501871_9.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/gdal-3.11.4-py310hb501871_9",
+    "type": 1
+  },
+  "md5": "6738913417e475f8caa0f88925b727a9",
+  "name": "gdal",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/gdal-3.11.4-py310hb501871_9.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/__pycache__/gdal2tiles.cpython-310.pyc",
+        "path_type": "hardlink",
+        "sha256": "c00c046ec8876f1082e9559eb445a10303567c926bb525c9613a49714f334b9a",
+        "sha256_in_prefix": "c00c046ec8876f1082e9559eb445a10303567c926bb525c9613a49714f334b9a",
+        "size_in_bytes": 652
+      },
+      {
+        "_path": "bin/__pycache__/gdal2xyz.cpython-310.pyc",
+        "path_type": "hardlink",
+        "sha256": "426d6e5e174470df910980210be2ebc5bca6c2c23bdd8faff445b1a010c445e1",
+        "sha256_in_prefix": "426d6e5e174470df910980210be2ebc5bca6c2c23bdd8faff445b1a010c445e1",
+        "size_in_bytes": 585
+      },
+      {
+        "_path": "bin/__pycache__/gdal_calc.cpython-310.pyc",
+        "path_type": "hardlink",
+        "sha256": "716a128047217aa6d2297593529c8909ecd1ecfa3ee49e6d45789a8c0065e697",
+        "sha256_in_prefix": "716a128047217aa6d2297593529c8909ecd1ecfa3ee49e6d45789a8c0065e697",
+        "size_in_bytes": 588
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "gdal",
+  "sha256": "56a2a97628f3eb8a570f0b3180bfb108075cfd3afce81d9d2dcba9d94c8ed719",
+  "size": 1672812,
+  "subdir": "linux-64",
+  "timestamp": 1762086023,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/gdal-3.11.4-py310hb501871_9.conda",
+  "version": "3.11.4"
+}

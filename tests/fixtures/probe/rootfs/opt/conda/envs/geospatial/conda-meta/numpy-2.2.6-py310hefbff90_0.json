@@ -1,0 +1,69 @@
+{
+  "arch": "x86_64",
+  "build": "py310hefbff90_0",
+  "build_number": 0,
+  "build_string": "py310hefbff90_0",
+  "channel": "conda-forge",
+  "constrains": [
+    "numpy-base <0a0"
+  ],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libblas >=3.9.0,<4.0a0",
+    "libcblas >=3.9.0,<4.0a0",
+    "libgcc >=13",
+    "liblapack >=3.9.0,<4.0a0",
+    "libstdcxx >=13",
+    "python >=3.10,<3.11.0a0",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "extracted_package_dir": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0",
+  "files": [
+    "bin/f2py",
+    "bin/numpy-config",
+    "lib/python3.10/site-packages/numpy-2.2.6.dist-info/INSTALLER"
+  ],
+  "fn": "numpy-2.2.6-py310hefbff90_0.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0",
+    "type": 1
+  },
+  "md5": "b0cea2c364bf65cd19e023040eeab05d",
+  "name": "numpy",
+  "package_tarball_full_path": "/opt/conda/pkgs/https/conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/f2py",
+        "path_type": "hardlink",
+        "sha256": "033be2a40b2f94c037726750adf0109f4944b8228e19b9b6e891b97f8408e889",
+        "sha256_in_prefix": "ad66dc7cc13927f7d19e4ddd68161cf0109c49e91040e12872487adc2a08dfd0",
+        "size_in_bytes": 499
+      },
+      {
+        "_path": "bin/numpy-config",
+        "path_type": "hardlink",
+        "sha256": "c03a1848fdc432e05fa569cf23c1853824174e0bcf3d8bb89c3c89331f3371b1",
+        "sha256_in_prefix": "2935f3bb41335b4bb22d0478402675f68a721bab3274dd37e0cc021da1abe84c",
+        "size_in_bytes": 499
+      },
+      {
+        "_path": "lib/python3.10/site-packages/numpy-2.2.6.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      }
+    ],
+    "paths_version": 1
+  },
+  "platform": "linux",
+  "requested_spec": "numpy",
+  "sha256": "0ba94a61f91d67413e60fa8daa85627a8f299b5054b0eff8f93d26da83ec755e",
+  "size": 7893263,
+  "subdir": "linux-64",
+  "timestamp": 1747545075,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0.conda",
+  "version": "2.2.6"
+}

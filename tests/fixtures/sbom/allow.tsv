@@ -1,0 +1,8 @@
+# What may be in the mesa-cli image of image.cdx.json without a lock entry (columns: ci/README.md, 'allow.tsv').
+# rule	layer	value	reason
+purl-type	*	deb	Ubuntu packages come from the digest-pinned base image and from apt
+purl-type	cpu	gem	gems are installed by apt (ruby-* packages)
+purl	*	pkg:npm/%40musistudio/claude-code-router@*	installed by npm -g from ARG CCR_VERSION until it moves into the npm lock
+purl	*	pkg:generic/python@3.14.8	interpreter bundled with the AWS CLI installer
+path	*	/usr/local/bin/irods-mcp-server	Go binary built in the Dockerfile; its modules are not locked
+path	cpu	/opt/conda/envs/geospatial/	Python metadata of conda packages; the conda lock covers the packages
