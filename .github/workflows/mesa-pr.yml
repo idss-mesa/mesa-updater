@@ -32,8 +32,10 @@ jobs:
         with:
           persist-credentials: false
 
+      # Also fails when VERSION is already released and the image's files
+      # differ from that release: a change to an image needs a new version.
       - name: Static checks
-        run: ci/mesa-ci.sh check
+        run: CHECK_RELEASED=1 ci/mesa-ci.sh check
 
   build:
     runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
@@ -83,14 +85,12 @@ jobs:
         if: matrix.arch == 'amd64'
         run: VARIANT=sandbox ci/mesa-ci.sh sbom
 
+      # The whole directory, so the artifact keeps the <variant>-<arch>/ level.
       - name: Upload SBOMs and reports
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: sbom-${{ matrix.arch }}
-          path: |
-            out/*/image.cdx.json
-            out/*/report.json
-            out/*/crosscheck.txt
+          path: out/
           if-no-files-found: ignore
           retention-days: 14

@@ -348,6 +348,56 @@ class AttachSbomTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("oras: simulated failure", result.stderr)
 
+    # ---- --index-only: rewrite the fallback tag from what is attached, sign nothing ----
+
+    def test_index_only_rewrites_the_tag_without_signing(self):
+        # An earlier run attested and died before writing the tag: Harbor lists the referrers, oras none.
+        self.registry(before=[ATTESTATION, SIGNATURE], after=[])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn("cosign", [c[0] for c in self.calls()])
+        self.assertEqual(self.pushed()["manifests"], [CORRECT[ATTESTATION], CORRECT[SIGNATURE]])
+        self.assertEqual(self.calls()[-1][:5], ["oras", "manifest", "push", "--media-type", INDEX_TYPE])
+        self.assertIn("lists 2 referrer(s)", result.stdout)
+
+    def test_index_only_keeps_what_only_the_existing_tag_lists(self):
+        self.registry(before=[ATTESTATION], after=[], oras_before=[SIGNATURE])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.pushed()["manifests"], [CORRECT[ATTESTATION], CORRECT[SIGNATURE]])
+
+    def test_index_only_without_a_cyclonedx_attestation(self):
+        # A signature and an SBOM attached with oras: listed in the tag, but nothing cosign could verify as ours.
+        self.registry(before=[ORAS_SBOM, SIGNATURE], after=[])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 3, result.stderr)
+        self.assertIn("is a CycloneDX attestation", result.stdout)
+        self.assertEqual(self.pushed()["manifests"], [CORRECT[ORAS_SBOM], CORRECT[SIGNATURE]])
+        self.assertNotIn("cosign", [c[0] for c in self.calls()])
+
+    def test_index_only_with_nothing_attached(self):
+        self.registry(before=[], after=[ATTESTATION])
+        result = self.run_script("--index-only", REF)
+        self.assertEqual(result.returncode, 3, result.stderr)
+        self.assertIn("lists no referrer", result.stdout)
+        self.assertNotIn("cosign", [c[0] for c in self.calls()])
+        self.assertFalse((self.state / "pushed.json").exists())
+
+    def test_index_only_failures_are_not_exit_3(self):
+        self.registry(before=[ATTESTATION], after=[])
+        (self.state / "manifests" / ATTESTATION[7:]).unlink()
+        self.assert_failed_without_push(self.run_script("--index-only", REF), 1, "MANIFEST_UNKNOWN")
+        self.registry(before=[ATTESTATION], after=[])
+        result = self.run_script("--index-only", REF, STUB_FAIL="oras discover")
+        self.assertEqual(result.returncode, 1)
+
+    def test_index_only_usage(self):
+        for args in (("--index-only",), ("--index-only", REF, str(SBOM)), ("--index-only", "registry.test/x:tag")):
+            with self.subTest(args=args):
+                result = self.run_script(*args)
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertEqual(self.calls(), [])
+
 
 if __name__ == "__main__":
     unittest.main()
