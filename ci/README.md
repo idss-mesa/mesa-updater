@@ -100,8 +100,8 @@ published. Cancelling a run stops the release if `publish` has not started.
 
 **Who may release.** Three things tie a release to what was merged:
 
-- The attestations are signed with a certificate GitHub issues to the
-  running workflow. It names the shared workflow file, the image repo, the
+- The attestations are signed with a short-lived certificate that Sigstore
+  issues from the identity token GitHub gives the running workflow. It names the shared workflow file, the image repo, the
   branch and the commit; `publish`, the GPU builder and the command in the
   release notes all check all four. A run from another branch cannot produce
   an attestation that passes for `main`.
@@ -117,8 +117,8 @@ repos and in this repo.
 workflow run in an image repo can use, on any branch. Whoever can push a
 branch there can therefore write tags in `vice/mesa-<app>` directly: move a
 rolling tag, or create a `vX.Y.Z` tag before the release does. The registry's
-immutability rule for `v*` stops an existing release tag from being moved,
-not a new one from being created. So:
+immutability rule for `v*` (to be set before the first release) stops an
+existing release tag from being moved, not a new one from being created. So:
 
 - an image is a release only together with its attestation; the command in
   the release notes checks it, and no branch run can produce one that passes;
@@ -221,8 +221,9 @@ Then, in this order:
    After signing, the image is verified again; failing that stops everything.
 2. **Tags**, only when every image verified: each tag is read again and
    written with `crane tag` if absent; a tag that meanwhile points elsewhere
-   stops the run. (The registry's immutability rule for `v*` is what makes a
-   written tag final; this check only makes a collision visible.)
+   stops the run. (The registry's immutability rule for `v*`, once set, is
+   what makes a written tag final; this check only makes a collision
+   visible.)
 3. **Release files** in `DIR/release/`: `<name>-<tag>.cdx.json` per image,
    `release-manifest.json`, `SHA256SUMS`, `notes.md`. An existing directory
    there is replaced only if it is an earlier release directory.
